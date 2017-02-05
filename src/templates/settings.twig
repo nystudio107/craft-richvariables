@@ -1,0 +1,26 @@
+{#
+/**
+ * Rich Variables plugin for Craft CMS 3.x
+ *
+ * Rich Variables Settings.twig
+ *
+ * @author    nystudio107
+ * @copyright Copyright (c) 2017 nystudio107
+ * @link      https://nystudio107.com
+ * @package   RichVariables
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesAsset") %}
+
+{{ forms.selectField({
+    label: 'Globals Set',
+    instructions: 'Choose the Globals Set that should be available for insertion into Rich Text fields',
+    id: 'globalSetHandle',
+    name: 'globalSetHandle',
+    options: globalsSets,
+    value: settings['globalSetHandle']})
+}}
