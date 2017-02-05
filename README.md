@@ -4,6 +4,10 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 ![Screenshot](resources/screenshots/richvariables00.png)
 
+## Issues:
+
+* The icon is broken for Craft 3; `Craft.getResourceUrl()` doesn't seem to work right, and I'm not sure how to get the URL to the icon in the Asset Bundle
+
 ## Rich Variables Overview
 
 Rich Variables allows you to easily use Craft Globals as variables in Rich Text fields.
@@ -67,7 +71,6 @@ Redactor can be a little weird with inline styles; this isn't anything specific 
 
 Some things to do, and ideas for potential features:
 
-* Port Rich Variables to Craft 3
 * Rich Variables could potentially have different Global sets for different Channels
 * We could allow for things other than Global sets to be available for insertion, such as Entry values, Categories, etc.
 
