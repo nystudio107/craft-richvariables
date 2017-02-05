@@ -52,7 +52,7 @@ RedactorPlugins.richvariables = function() {
             // Add the button and dropdown
             var button = this.button.add('variables', 'Variables');
             this.button.addDropdown(button, dropdown);
-            this.button.setIcon(button, '<img src="' + Craft.getResourceUrl('richvariables/icon.svg') + '" height="16" width="16" style="margin-top: -2px;">');
+            this.button.setIcon(button, '<img src="' + window.richVariables.icon + '" height="16" width="16" style="margin-top: -2px;">');
         },
     };
 };

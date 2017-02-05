@@ -15,7 +15,9 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
+use craft\helpers\Json;
 use craft\web\UrlManager;
+use craft\web\View;
 use craft\events\RegisterUrlRulesEvent;
 use yii\base\Event;
 
@@ -47,7 +49,16 @@ class RichVariables extends Plugin
 
         if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
             if (Craft::$app->getRequest()->getIsCpRequest()) {
-                Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+                $view = Craft::$app->getView();
+                $am = Craft::$app->getAssetManager();
+
+                $jsSettings = [
+                    'icon' => $am->getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true).'/img/RichVariables-icon.svg',
+                ];
+
+                $view->registerJs('window.richVariables = '.Json::encode($jsSettings).';', View::POS_BEGIN);
+
+                $view->registerAssetBundle(RichVariablesAsset::class);
             }
         }
 
