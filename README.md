@@ -6,7 +6,17 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 ## Issues:
 
+* The controller will throw an error, and thus the JavaScript won't load until this issue is fixed by P&T: https://github.com/craftcms/cms/issues/1351
 * The icon is broken for Craft 3; `Craft.getResourceUrl()` doesn't seem to work right, and I'm not sure how to get the URL to the icon in the Asset Bundle
+
+## Installation
+
+To install Rich Variables, follow these steps:
+
+1. Install with Composer via `composer require nystudio107/craft3-richvariables`
+2. Install plugin in the Craft Control Panel under Settings > Plugins
+
+Rich Variables works on Craft 3.x
 
 ## Rich Variables Overview
 
