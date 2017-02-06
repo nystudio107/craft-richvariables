@@ -36,7 +36,7 @@ RedactorPlugins.richvariables = function() {
                 dropdown[key] = {
                     title: menuItem.title,
                     func: function(buttonName) {
-                        this.insert.raw('<ins> ' + menuItem.text + ' </ins>');
+                        this.insert.raw('<ins>' + menuItem.text + '</ins>');
                     },
                 };
             });
