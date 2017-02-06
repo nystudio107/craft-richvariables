@@ -7,7 +7,7 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 ## Issues:
 
 * The GlobalSet Reference Tags will not get parsed due to this bug in Craft 3: https://github.com/craftcms/cms/issues/1359
-* The controller will throw an error, and thus the JavaScript won't load until this issue is fixed by P&T: https://github.com/craftcms/cms/issues/1351
+* The controller will throw an error, and thus the JavaScript won't load due to this bug in Craft 3: https://github.com/craftcms/cms/issues/1351
 
 ## Installation
 
