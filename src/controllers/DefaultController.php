@@ -90,6 +90,7 @@ class DefaultController extends Controller
         // Return everything to our JavaScript encoded as JSON
         $result['variablesList'] = $variablesList;
         $result['menuIconUrl'] = $menuIconUrl;
+        $result['useIconForMenu'] = $settings['useIconForMenu'];
         return Json::encode($result);
     }
 }

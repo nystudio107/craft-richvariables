@@ -30,6 +30,11 @@ class Settings extends Model
      */
     public $globalSetHandle = '';
 
+    /**
+     * @var bool
+     */
+    public $useIconForMenu = true;
+
     // Public Methods
     // =========================================================================
 
@@ -40,6 +45,7 @@ class Settings extends Model
     {
         return [
             ['globalSetHandle', 'string'],
+            ['useIconForMenu', 'boolean'],
             ['globalSetHandle', 'default', 'value' => ''],
         ];
     }

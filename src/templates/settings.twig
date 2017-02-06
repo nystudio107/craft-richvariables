@@ -22,5 +22,13 @@
     id: 'globalSetHandle',
     name: 'globalSetHandle',
     options: globalsSets,
-    value: settings['globalSetHandle']})
-}}
+    value: settings['globalSetHandle']
+}) }}
+
+{{ forms.lightswitchField({
+    label: "Use Icon for Menu"|t,
+    instructions: "Controls whether the Rich Variables menu should display itself as an icon or text" |t,
+    id: 'useIconForMenu',
+    name: 'useIconForMenu',
+    on: settings['useIconForMenu'],
+}) }}
