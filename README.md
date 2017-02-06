@@ -7,7 +7,6 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 ## Issues:
 
 * The controller will throw an error, and thus the JavaScript won't load until this issue is fixed by P&T: https://github.com/craftcms/cms/issues/1351
-* The icon is broken for Craft 3; `Craft.getResourceUrl()` doesn't seem to work right, and I'm not sure how to get the URL to the icon in the Asset Bundle
 
 ## Installation
 
