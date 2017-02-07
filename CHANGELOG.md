@@ -3,6 +3,7 @@
 ## 1.0.4 -- 2017.02.08
 ### Changed
 * Improved how we retrieved the settings, using RichVariables::$plugin
+* Removed the Issues from the README.md
 
 ## 1.0.3 -- 2017.02.07
 ### Fixed
