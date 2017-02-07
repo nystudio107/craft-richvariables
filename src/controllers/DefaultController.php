@@ -51,7 +51,7 @@ class DefaultController extends Controller
         $variablesList = [];
 
         // Get the global set to use
-        $settings = Craft::$app->getPlugins()->getPlugin('richvariables')->getSettings();
+        $settings = RichVariables::$plugin->getSettings();
         $globalsSet = Craft::$app->getGlobals()->getSetByHandle($settings['globalSetHandle']);
         // Grab the first global set if they haven't specified one yet
         if (!$globalsSet) {

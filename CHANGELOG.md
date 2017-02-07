@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.4 -- 2017.02.08
+### Changed
+* Improved how we retrieved the settings, using RichVariables::$plugin
+
 ## 1.0.3 -- 2017.02.07
 ### Fixed
 * Fixed an issue where the user might be redirected errantly to JSON settings on login
