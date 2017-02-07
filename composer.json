@@ -27,7 +27,7 @@
     "extra": {
         "name": "RichVariables",
         "handle": "richVariables",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "schemaVersion": "1.0.0",
         "hasSettings": true,
         "hasCpSection": false,

@@ -46,7 +46,7 @@ class RichVariables extends Plugin
         self::$plugin = $this;
 
         if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
-            if (Craft::$app->getRequest()->getIsCpRequest()) {
+            if (Craft::$app->getRequest()->getIsCpRequest() && !Craft::$app->getUser()->getIsGuest()) {
                 Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
             }
         }
