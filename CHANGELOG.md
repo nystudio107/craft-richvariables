@@ -1,5 +1,10 @@
 # Rich Variables Changelog
 
+## 1.0.5 -- 2017.02.10
+### Changed
+* Removed `allowAnonymous` from the controller, since we only want to work for logged in users
+* Cleaned up `composer.json`
+
 ## 1.0.4 -- 2017.02.08
 ### Changed
 * Improved how we retrieved the settings, using RichVariables::$plugin
