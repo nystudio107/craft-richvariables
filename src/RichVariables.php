@@ -51,7 +51,7 @@ class RichVariables extends Plugin
             }
         }
 
-        Craft::info('RichVariables ' . Craft::t('richVariables', 'plugin loaded'), __METHOD__);
+        Craft::info('RichVariables '.Craft::t('richVariables', 'plugin loaded'), __METHOD__);
     }
 
     // Protected Methods
@@ -71,16 +71,17 @@ class RichVariables extends Plugin
     protected function settingsHtml(): string
     {
         // Get all of the globals sets
-        $globalsHandles = array();
+        $globalsHandles = [];
         $allGlobalsSets = Craft::$app->getGlobals()->getAllSets();
         foreach ($allGlobalsSets as $globalsSet) {
             $globalsHandles[$globalsSet->handle] = $globalsSet->name;
         }
+
         // Render our settings template
         return Craft::$app->view->renderTemplate(
             'richvariables'
-            . DIRECTORY_SEPARATOR
-            . 'settings',
+            .DIRECTORY_SEPARATOR
+            .'settings',
             [
                 'settings' => $this->getSettings(),
                 'globalsSets' => $globalsHandles,

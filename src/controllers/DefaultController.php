@@ -46,7 +46,7 @@ class DefaultController extends Controller
         if (!$globalsSet) {
             $allGlobalsSetIds = Craft::$app->getGlobals()->getAllSetIds();
             if (!empty($allGlobalsSetIds)) {
-                //$globalsSet = Craft::$app->globals->getSetById($allGlobalsSetIds[0]);
+                $globalsSet = Craft::$app->globals->getSetById($allGlobalsSetIds[0]);
             }
         }
         if ($globalsSet) {
@@ -55,18 +55,16 @@ class DefaultController extends Controller
             foreach ($fieldLayoutFields as $fieldLayoutField) {
                 // Get the actual field, and check that it's type is something we support
                 $field = Craft::$app->getFields()->getFieldById($fieldLayoutField->id);
-                $fieldType = get_class($field);
-                if (
-                    ($field instanceof PlainText) || (is_subclass_of($field, PlainText::class)) ||
+                if (($field instanceof PlainText) || (is_subclass_of($field, PlainText::class)) ||
                     ($field instanceof Number) || (is_subclass_of($field, Number::class)) ||
                     ($field instanceof Date) || (is_subclass_of($field, Date::class)) ||
                     ($field instanceof Dropdown) || (is_subclass_of($field, Dropdown::class))
-                    ) {
+                ) {
                     // Add the field title and Reference Tag as per https://craftcms.com/docs/reference-tags
                     $thisVar = [
                         'title' => $field->name,
-                        'text' => "{globalset:" . $globalsSet->attributes['id'] . ":" . $field->handle . "}",
-                        ];
+                        'text' => "{globalset:".$globalsSet->attributes['id'].":".$field->handle."}",
+                    ];
                     $variablesList[] = $thisVar;
                 }
             }
@@ -74,12 +72,13 @@ class DefaultController extends Controller
 
         // Get the URL to our menu icon from our resource bundle
         Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
-        $menuIconUrl = Craft::$app->assetManager->getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true) . '/img/RichVariables-icon.svg';
+        $menuIconUrl = Craft::$app->assetManager->getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true).'/img/RichVariables-icon.svg';
 
         // Return everything to our JavaScript encoded as JSON
         $result['variablesList'] = $variablesList;
         $result['menuIconUrl'] = $menuIconUrl;
         $result['useIconForMenu'] = $settings['useIconForMenu'];
+
         return Json::encode($result);
     }
 }
