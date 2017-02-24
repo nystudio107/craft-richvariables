@@ -1,23 +1,31 @@
 # Rich Variables Changelog
 
-## 1.0.5 -- 2017.02.09
+## 1.0.6 - 2017.02.24
+### Fixed
+* Fixed a styling issue with Redactor 2.2
+
+### Changed
+* Removed the unused `icon-mask.svg` file
+* Removed the unused `config.php` file
+
+## 1.0.5 - 2017.02.09
 ### Changed
 * Removed `allowAnonymous` from the controller, since we only want to work for logged in users
 * Cleaned up `composer.json`
 
-## 1.0.4 -- 2017.02.08
+## 1.0.4 - 2017.02.08
 ### Changed
 * Improved how we retrieved the settings, using RichVariables::$plugin
 * Removed the Issues from the README.md
 
-## 1.0.3 -- 2017.02.07
+## 1.0.3 - 2017.02.07
 ### Fixed
 * Fixed an issue where the user might be redirected errantly to JSON settings on login
 
 ### Changed
 * Removed the spaces inside of the inserted `<ins>` tags
 
-## 1.0.2 -- 2017.02.06
+## 1.0.2 - 2017.02.06
 ### Added
 * Added a setting to control whether the Rich Variables menu should be text or an icon
 
