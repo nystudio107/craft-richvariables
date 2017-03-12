@@ -1,5 +1,10 @@
 # Rich Variables Changelog
 
+## 1.0.7 - 2017.03.12
+### Added
+* Added `craft/cms` as a composer dependency
+* Added code inspection typehinting for the plugin
+
 ## 1.0.6 - 2017.02.24
 ### Fixed
 * Fixed a styling issue with Redactor 2.2

@@ -15,11 +15,10 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
-use craft\web\UrlManager;
-use craft\events\RegisterUrlRulesEvent;
-use yii\base\Event;
 
 /**
+ * Class RichVariables
+ *
  * @author    nystudio107
  * @package   RichVariables
  * @since     1.0.0
@@ -30,7 +29,7 @@ class RichVariables extends Plugin
     // =========================================================================
 
     /**
-     * @var static
+     * @var RichVariables
      */
     public static $plugin;
 
