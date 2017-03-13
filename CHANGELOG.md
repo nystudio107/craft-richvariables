@@ -1,5 +1,10 @@
 # Rich Variables Changelog
 
+## 1.0.8 - 2017.03.13
+### Fixed
+* The handle used for translations is now all lowercase
+
+
 ## 1.0.7 - 2017.03.12
 ### Added
 * Added `craft/cms` as a composer dependency

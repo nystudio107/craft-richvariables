@@ -50,7 +50,7 @@ class RichVariables extends Plugin
             }
         }
 
-        Craft::info('RichVariables '.Craft::t('richVariables', 'plugin loaded'), __METHOD__);
+        Craft::info('RichVariables '.Craft::t('richvariables', 'plugin loaded'), __METHOD__);
     }
 
     // Protected Methods
