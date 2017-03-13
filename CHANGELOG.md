@@ -4,7 +4,6 @@
 ### Fixed
 * The handle used for translations is now all lowercase
 
-
 ## 1.0.7 - 2017.03.12
 ### Added
 * Added `craft/cms` as a composer dependency
