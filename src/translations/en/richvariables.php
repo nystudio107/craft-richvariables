@@ -14,5 +14,5 @@
  * @since     1.0.0
  */
 return [
-    'plugin loaded' => 'plugin loaded',
+    'Rich Variables plugin loaded' => 'Rich Variables plugin loaded',
 ];
