@@ -17,6 +17,7 @@
 {% do view.registerAssetBundle("nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesAsset") %}
 
 {{ forms.selectField({
+    first: true,
     label: 'Globals Set',
     instructions: 'Choose the Globals Set that should be available for insertion into Rich Text fields',
     id: 'globalSetHandle',
