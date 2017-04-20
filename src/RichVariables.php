@@ -50,7 +50,7 @@ class RichVariables extends Plugin
 
         // Handler: RichText::EVENT_REGISTER_REDACTOR_PLUGIN
         Event::on(
-            RichText::className(),
+            RichText::class,
             RichText::EVENT_REGISTER_REDACTOR_PLUGIN,
             function (RegisterRedactorPluginEvent $event) {
                 Craft::trace(
