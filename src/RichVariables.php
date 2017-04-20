@@ -48,7 +48,7 @@ class RichVariables extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        // RichText::EVENT_REGISTER_REDACTOR_PLUGIN
+        // Handler: RichText::EVENT_REGISTER_REDACTOR_PLUGIN
         Event::on(
             RichText::className(),
             RichText::EVENT_REGISTER_REDACTOR_PLUGIN,
