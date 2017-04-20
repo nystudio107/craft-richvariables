@@ -4,7 +4,7 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
-![Screenshot](resources/screenshots/richvariables00.png)
+![Screenshot](resources/screenshots/richvariables03.png)
 
 ## Installation
 
@@ -54,11 +54,9 @@ The setup was the hard part. Using Rich Variables is easy, just go to your Rich 
 
 Choose one to insert it into your Rich Text field. You'll see some code-looking stuff inserted, such as `{globalset:737:loanName}` in the example above.
 
-This is actually a [Reference Tag](https://craftcms.com/docs/reference-tags) to the Globals set Element and Field that you chose. But that needn't concern you, because once you save the Entry, it will appear like this:
-
-![Screenshot](resources/screenshots/richvariables04.png)
-
-...with a tokenized display of the actual value that is in your Globals set Fields. If you change the values in your Globals set Fields, they will automatically be updated everywhere they are used in your Rich Text fields.
+This is actually a [Reference Tag](https://craftcms.com/docs/reference-tags) to the Globals set Element and Field that you chose. 
+ 
+ If you change the values in your Globals set Fields, they will automatically be updated everywhere they are used in your Rich Text fields.
 
 On the frontend, the display of the Rich Text field will also automatically include the Globals set values, and might look something like this:
 
