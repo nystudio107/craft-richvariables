@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.10 - 2017.04.20
+### Changed
+* Register the Redactor plugin via `RichText::EVENT_REGISTER_REDACTOR_PLUGIN`
+
 ## 1.0.9 - 2017.03.24
 ### Changed
 * `hasSettings` -> `hasCpSettings` for Craft 3 beta 8 compatibility

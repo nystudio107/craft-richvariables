@@ -13,6 +13,7 @@ namespace nystudio107\richvariables\assetbundles\RichVariables;
 use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
+use craft\web\assets\redactor\RedactorAsset;
 
 /**
  * @author    nystudio107
@@ -33,6 +34,7 @@ class RichVariablesAsset extends AssetBundle
 
         $this->depends = [
             CpAsset::class,
+            RedactorAsset::class,
         ];
 
         $this->js = [

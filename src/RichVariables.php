@@ -15,6 +15,10 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
+use craft\events\RegisterRedactorPluginEvent;
+use craft\fields\RichText;
+
+use yii\base\Event;
 
 /**
  * Class RichVariables
@@ -44,11 +48,20 @@ class RichVariables extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
-            if (Craft::$app->getRequest()->getIsCpRequest() && !Craft::$app->getUser()->getIsGuest()) {
-                Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+        // Handler: RichText::EVENT_REGISTER_REDACTOR_PLUGIN
+        Event::on(
+            RichText::class,
+            RichText::EVENT_REGISTER_REDACTOR_PLUGIN,
+            function (RegisterRedactorPluginEvent $event) {
+                Craft::trace(
+                    'RichText::EVENT_REGISTER_REDACTOR_PLUGIN',
+                    'richvariables'
+                );
+                if ($event->plugin == 'richvariables') {
+                    Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+                }
             }
-        }
+        );
 
         Craft::info(
             Craft::t(
@@ -86,10 +99,10 @@ class RichVariables extends Plugin
         // Render our settings template
         return Craft::$app->view->renderTemplate(
             'richvariables'
-            .DIRECTORY_SEPARATOR
-            .'settings',
+            . DIRECTORY_SEPARATOR
+            . 'settings',
             [
-                'settings' => $this->getSettings(),
+                'settings'    => $this->getSettings(),
                 'globalsSets' => $globalsHandles,
             ]
         );
