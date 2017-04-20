@@ -15,6 +15,10 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
+use craft\events\RegisterRedactorPluginEvent;
+use craft\fields\RichText;
+
+use yii\base\Event;
 
 /**
  * Class RichVariables
@@ -46,7 +50,20 @@ class RichVariables extends Plugin
 
         if (!Craft::$app->getRequest()->getIsConsoleRequest()) {
             if (Craft::$app->getRequest()->getIsCpRequest() && !Craft::$app->getUser()->getIsGuest()) {
-                Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+                // RichText::EVENT_REGISTER_REDACTOR_PLUGIN
+                Event::on(
+                    RichText::className(),
+                    RichText::EVENT_REGISTER_REDACTOR_PLUGIN,
+                    function (RegisterRedactorPluginEvent $event) {
+                        Craft::trace(
+                            'RichText::EVENT_REGISTER_REDACTOR_PLUGIN',
+                            'richvariables'
+                        );
+                        if ($event->plugin == 'richvariables') {
+                            Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+                        }
+                    }
+                );
             }
         }
 
