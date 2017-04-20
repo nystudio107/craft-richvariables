@@ -17,6 +17,7 @@ use Craft;
 use craft\web\Controller;
 use craft\helpers\Json;
 use craft\fields\PlainText;
+use craft\fields\RichText;
 use craft\fields\Number;
 use craft\fields\Date;
 use craft\fields\Dropdown;
@@ -57,6 +58,7 @@ class DefaultController extends Controller
                 $field = Craft::$app->getFields()->getFieldById($fieldLayoutField->id);
                 if (($field instanceof PlainText) || (is_subclass_of($field, PlainText::class)) ||
                     ($field instanceof Number) || (is_subclass_of($field, Number::class)) ||
+                    ($field instanceof RichText) || (is_subclass_of($field, RichText::class)) ||
                     ($field instanceof Date) || (is_subclass_of($field, Date::class)) ||
                     ($field instanceof Dropdown) || (is_subclass_of($field, Dropdown::class))
                 ) {

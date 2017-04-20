@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.11 - 2017.04.20
+### Changed
+* Added support for `RichText` fields to be selected as variables
+
 ## 1.0.10 - 2017.04.20
 ### Changed
 * Register the Redactor plugin via `RichText::EVENT_REGISTER_REDACTOR_PLUGIN`
