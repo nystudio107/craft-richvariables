@@ -65,7 +65,7 @@ class RichVariables extends Plugin
 
         Craft::info(
             Craft::t(
-                'richvariables',
+                'rich-variables',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),
