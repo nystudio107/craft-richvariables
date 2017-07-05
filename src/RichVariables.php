@@ -98,7 +98,7 @@ class RichVariables extends Plugin
 
         // Render our settings template
         return Craft::$app->view->renderTemplate(
-            'richvariables'
+            'rich-variables'
             . DIRECTORY_SEPARATOR
             . 'settings',
             [
