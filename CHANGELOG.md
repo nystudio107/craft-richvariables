@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.12 - 2017.07.15
+### Changed
+* Craft 3 beta 20 compatibility
+
 ## 1.0.11 - 2017.04.20
 ### Changed
 * Added support for `RichText` fields to be selected as variables
