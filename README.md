@@ -4,6 +4,8 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
+**Note**: This plugin may become a paid add-on when the Craft Plugin store becomes available.
+
 ![Screenshot](resources/screenshots/richvariables03.png)
 
 ## Installation
