@@ -13,7 +13,7 @@ namespace nystudio107\richvariables\assetbundles\RichVariables;
 use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
-use craft\web\assets\redactor\RedactorAsset;
+use craft\redactor\assets\redactor\RedactorAsset;
 
 /**
  * @author    nystudio107
@@ -39,11 +39,6 @@ class RichVariablesAsset extends AssetBundle
 
         $this->js = [
             'js/foreachpolyfill.js',
-            'js/RichVariables.js',
-        ];
-
-        $this->css = [
-            'css/RichVariables.css',
         ];
 
         parent::init();

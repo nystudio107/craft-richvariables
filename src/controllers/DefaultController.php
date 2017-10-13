@@ -17,7 +17,7 @@ use Craft;
 use craft\web\Controller;
 use craft\helpers\Json;
 use craft\fields\PlainText;
-use craft\fields\RichText;
+use craft\redactor\Field as RichText;
 use craft\fields\Number;
 use craft\fields\Date;
 use craft\fields\Dropdown;
