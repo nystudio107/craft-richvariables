@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.13 - 2017.10.22
+### Changed
+* Craft 3 compatibility
+
 ## 1.0.12 - 2017.07.15
 ### Changed
 * Craft 3 beta 20 compatibility
