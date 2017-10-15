@@ -18,6 +18,8 @@ use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
 use craft\helpers\FileHelper;
+use craft\redactor\events\RegisterPluginPathsEvent;
+use craft\redactor\Field as RichText;
 
 use yii\base\Event;
 
@@ -35,7 +37,7 @@ class RichVariables extends Plugin
 
     const REDACTOR_PLUGIN_FILES = [
         'richvariables.css',
-        'richvariables.js'
+        'richvariables.js',
     ];
 
     // Static Properties
@@ -59,29 +61,21 @@ class RichVariables extends Plugin
 
         // Make sure the Redactor plugin is installed
         if (Craft::$app->getPlugins()->getPlugin('redactor')) {
-            // Event handler: Plugins::EVENT_AFTER_INSTALL_PLUGIN
+            // Event handler: RichText::EVENT_REGISTER_PLUGIN_PATHS
             Event::on(
-                Plugins::className(),
-                Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-                function (PluginEvent $event) {
-                    if ($event->plugin === $this) {
-                        // Copy our Redactor plugin into place
-                        $this->installRedactorPlugin();
-                    }
+                RichText::class,
+                RichText::EVENT_REGISTER_PLUGIN_PATHS,
+                function (RegisterPluginPathsEvent $event) {
+                    // Add the path to our Redactor plugin
+                    $src = Craft::getAlias('@nystudio107/richvariables')
+                        .DIRECTORY_SEPARATOR
+                        .'redactor'
+                        .DIRECTORY_SEPARATOR
+                        .'plugins';
+                    $event->paths[] = $src;
                 }
             );
 
-            // Event handler: Plugins::EVENT_AFTER_INSTALL_PLUGIN
-            Event::on(
-                Plugins::className(),
-                Plugins::EVENT_AFTER_UNINSTALL_PLUGIN,
-                function (PluginEvent $event) {
-                    if ($event->plugin === $this) {
-                        // Remove our Redactor plugin
-                        $this->removeRedactorPlugin();
-                    }
-                }
-            );
             // Register our asset bundle
             Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
         }
@@ -129,37 +123,5 @@ class RichVariables extends Plugin
                 'globalsSets' => $globalsHandles,
             ]
         );
-    }
-
-    /**
-     * Install the Redactor plugin files
-     */
-    private function installRedactorPlugin()
-    {
-        $src = Craft::getAlias('@nystudio107/richvariables')
-            .DIRECTORY_SEPARATOR
-            .'redactor'
-            .DIRECTORY_SEPARATOR
-            .'plugins'
-            .DIRECTORY_SEPARATOR;
-        $dest = Craft::getAlias('@config/redactor/plugins')
-            .DIRECTORY_SEPARATOR;
-        foreach (self::REDACTOR_PLUGIN_FILES as $file) {
-            if (($contents = file_get_contents($src.$file)) !== false) {
-                FileHelper::writeToFile($dest.$file, $contents);
-            }
-        }
-    }
-
-    /**
-     * Remove the Redactor plugin files
-     */
-    private function removeRedactorPlugin()
-    {
-        $src = Craft::getAlias('@config/redactor/plugins')
-            .DIRECTORY_SEPARATOR;
-        foreach (self::REDACTOR_PLUGIN_FILES as $file) {
-            unlink($src.$file);
-        }
     }
 }
