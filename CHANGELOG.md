@@ -2,7 +2,7 @@
 
 ## 1.0.13 - 2017.10.22
 ### Changed
-* Craft 3 compatibility
+* Craft 3 RC 1 compatibility
 
 ## 1.0.12 - 2017.07.15
 ### Changed
