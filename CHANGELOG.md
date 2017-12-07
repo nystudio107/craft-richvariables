@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.14 - 2017.12.06
+### Changed
+* Updated to require craftcms/cms `^3.0.0-RC1`
+
 ## 1.0.13 - 2017.10.22
 ### Changed
 * Craft 3 RC 1 compatibility
