@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.15 - 2017.12.12
+### Changed
+* Only load our AssetBundle on non-console AdminCP requests
+
 ## 1.0.14 - 2017.12.06
 ### Changed
 * Updated to require craftcms/cms `^3.0.0-RC1`
