@@ -2,11 +2,15 @@
 
 Allows you to easily use Craft Globals as variables in Rich Text fields
 
+![Screenshot](resources/img/plugin-logo.png)
+
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
 **Note**: This plugin may become a paid add-on when the Craft Plugin store becomes available.
 
-![Screenshot](resources/screenshots/richvariables03.png)
+## Requirements
+
+This plugin requires Craft CMS 3.0.0-RC1 or later.
 
 ## Installation
 
