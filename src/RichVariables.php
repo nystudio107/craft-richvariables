@@ -59,27 +59,29 @@ class RichVariables extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        // Make sure the Redactor plugin is installed
-        if (Craft::$app->getPlugins()->getPlugin('redactor')) {
-            // Event handler: RichText::EVENT_REGISTER_PLUGIN_PATHS
-            Event::on(
-                RichText::class,
-                RichText::EVENT_REGISTER_PLUGIN_PATHS,
-                function (RegisterPluginPathsEvent $event) {
-                    // Add the path to our Redactor plugin
-                    $src = Craft::getAlias('@nystudio107/richvariables')
-                        .DIRECTORY_SEPARATOR
-                        .'redactor'
-                        .DIRECTORY_SEPARATOR
-                        .'plugins';
-                    $event->paths[] = $src;
-                }
-            );
-
-            // Register our asset bundle
-            Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+        // Only load for AdminCP, non-console requests
+        $request = Craft::$app->getRequest();
+        if ($request->getIsCpRequest() && !$request->getIsConsoleRequest()) {
+            // Make sure the Redactor plugin is installed
+            if (Craft::$app->getPlugins()->getPlugin('redactor')) {
+                // Event handler: RichText::EVENT_REGISTER_PLUGIN_PATHS
+                Event::on(
+                    RichText::class,
+                    RichText::EVENT_REGISTER_PLUGIN_PATHS,
+                    function (RegisterPluginPathsEvent $event) {
+                        // Add the path to our Redactor plugin
+                        $src = Craft::getAlias('@nystudio107/richvariables')
+                            .DIRECTORY_SEPARATOR
+                            .'redactor'
+                            .DIRECTORY_SEPARATOR
+                            .'plugins';
+                        $event->paths[] = $src;
+                    }
+                );
+                // Register our asset bundle
+                Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+            }
         }
-
         Craft::info(
             Craft::t(
                 'rich-variables',
