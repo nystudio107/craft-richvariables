@@ -16,7 +16,7 @@ This plugin requires Craft CMS 3.0.0-RC1 or later.
 
 To install Rich Variables, follow these steps:
 
-1. Install with Composer via `composer require nystudio107/craft3-richvariables` from your project directory
+1. Install with Composer via `composer require nystudio107/craft-richvariables` from your project directory
 2. Install plugin in the Craft Control Panel under Settings > Plugins
 
 Rich Variables works on Craft 3.x
