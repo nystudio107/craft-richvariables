@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.16 - 2018.02.01
+### Added
+* Renamed the composer package name to `craft-richvariables`
+
 ## 1.0.15 - 2017.12.12
 ### Changed
 * Only load our AssetBundle on non-console AdminCP requests
