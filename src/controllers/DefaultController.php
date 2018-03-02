@@ -16,11 +16,14 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 use Craft;
 use craft\web\Controller;
 use craft\helpers\Json;
-use craft\fields\PlainText;
-use craft\redactor\Field as RichText;
-use craft\fields\Number;
-use craft\fields\Date;
-use craft\fields\Dropdown;
+use craft\fields\PlainText as PlainTextField;
+use craft\fields\Number as NumberField;
+use craft\fields\Date as DateField;
+use craft\fields\Dropdown as DropdownField;
+use craft\redactor\Field as RedactorField;
+use craft\ckeditor\Field as CKEditorField;
+
+use yii\base\InvalidConfigException;
 
 /**
  * @author    nystudio107
@@ -29,6 +32,18 @@ use craft\fields\Dropdown;
  */
 class DefaultController extends Controller
 {
+    // Constants
+    // =========================================================================
+
+    const VALID_FIELD_CLASSES = [
+        PlainTextField::class,
+        NumberField::class,
+        DateField::class,
+        DropdownField::class,
+        RedactorField::class,
+        CKEditorField::class,
+    ];
+
     // Public Methods
     // =========================================================================
 
@@ -56,24 +71,24 @@ class DefaultController extends Controller
             foreach ($fieldLayoutFields as $fieldLayoutField) {
                 // Get the actual field, and check that it's type is something we support
                 $field = Craft::$app->getFields()->getFieldById($fieldLayoutField->id);
-                if (($field instanceof PlainText) || (is_subclass_of($field, PlainText::class)) ||
-                    ($field instanceof Number) || (is_subclass_of($field, Number::class)) ||
-                    ($field instanceof RichText) || (is_subclass_of($field, RichText::class)) ||
-                    ($field instanceof Date) || (is_subclass_of($field, Date::class)) ||
-                    ($field instanceof Dropdown) || (is_subclass_of($field, Dropdown::class))
-                ) {
-                    // Add the field title and Reference Tag as per https://craftcms.com/docs/reference-tags
-                    $thisVar = [
-                        'title' => $field->name,
-                        'text' => "{globalset:".$globalsSet->attributes['id'].":".$field->handle."}",
-                    ];
-                    $variablesList[] = $thisVar;
+                foreach (self::VALID_FIELD_CLASSES as $fieldClass) {
+                    if ($field instanceof $fieldClass) {
+                        // Add the field title and Reference Tag as per https://craftcms.com/docs/reference-tags
+                        $thisVar = [
+                            'title' => $field->name,
+                            'text' => "{globalset:".$globalsSet->attributes['id'].":".$field->handle."}",
+                        ];
+                        $variablesList[] = $thisVar;
+                    }
                 }
             }
         }
 
         // Get the URL to our menu icon from our resource bundle
-        Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+        try {
+            Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+        } catch (InvalidConfigException $e) {
+        }
         $menuIconUrl = Craft::$app->assetManager->getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true).'/img/RichVariables-icon.svg';
 
         // Return everything to our JavaScript encoded as JSON
