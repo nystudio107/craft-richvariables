@@ -14,7 +14,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
 
 // Grab the globals set Reference Tags from our controller
 var request = new XMLHttpRequest();
-request.open('GET', Craft.getActionUrl('/rich-variables'), false);
+request.open('GET', Craft.getActionUrl('rich-variables'), false);
 request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
     } else {
