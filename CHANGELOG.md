@@ -1,5 +1,11 @@
 # Rich Variables Changelog
 
+## 1.0.17 - 2018.03.02
+### Added
+* Fixed the controller URL which stopped working in Craft CMS 3 RC13
+* Fixed deprecation errors from Craft CMS 3 RC13
+* Code cleanup
+
 ## 1.0.16 - 2018.02.01
 ### Added
 * Renamed the composer package name to `craft-richvariables`
