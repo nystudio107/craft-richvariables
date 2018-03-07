@@ -1,4 +1,4 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/richvariables/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nystudio107/richvariables/?branch=master)[![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/richvariables/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/nystudio107/richvariables/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1)[![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1)
 # Rich Variables plugin for Craft CMS 3.x
 
 Allows you to easily use Craft Globals as variables in Rich Text fields
