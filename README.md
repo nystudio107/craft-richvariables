@@ -1,4 +1,5 @@
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1)[![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
+
 # Rich Variables plugin for Craft CMS 3.x
 
 Allows you to easily use Craft Globals as variables in Rich Text fields
@@ -7,7 +8,7 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
-**Note**: This plugin may become a paid add-on when the Craft Plugin store becomes available.
+**Note**: _This plugin will cost $19.00 once Craft 3 GA is released._
 
 ## Requirements
 
@@ -19,6 +20,8 @@ To install Rich Variables, follow these steps:
 
 1. Install with Composer via `composer require nystudio107/craft-richvariables` from your project directory
 2. Install plugin in the Craft Control Panel under Settings > Plugins
+
+You can also install Rich Variables via the **Plugin Store** in the Craft AdminCP.
 
 Rich Variables works on Craft 3.x
 
