@@ -15,13 +15,12 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
-use craft\helpers\FileHelper;
 use craft\redactor\events\RegisterPluginPathsEvent;
 use craft\redactor\Field as RichText;
 
 use yii\base\Event;
+
+use Composer\Semver\Comparator;
 
 /**
  * Class RichVariables
@@ -63,18 +62,21 @@ class RichVariables extends Plugin
         $request = Craft::$app->getRequest();
         if ($request->getIsCpRequest() && !$request->getIsConsoleRequest()) {
             // Make sure the Redactor plugin is installed
-            if (Craft::$app->getPlugins()->getPlugin('redactor')) {
+            $redactor = Craft::$app->getPlugins()->getPlugin('redactor');
+            if ($redactor) {
                 // Event handler: RichText::EVENT_REGISTER_PLUGIN_PATHS
                 Event::on(
                     RichText::class,
                     RichText::EVENT_REGISTER_PLUGIN_PATHS,
                     function (RegisterPluginPathsEvent $event) {
+                        /** @var Plugin $redactor */
+                        $redactor = Craft::$app->getPlugins()->getPlugin('redactor');
+                        $versionDir = 'v1';
+                        if (Comparator::greaterThanOrEqualTo($redactor->version, '2.0.0')) {
+                            $versionDir = 'v2';
+                        }
                         // Add the path to our Redactor plugin
-                        $src = Craft::getAlias('@nystudio107/richvariables')
-                            .DIRECTORY_SEPARATOR
-                            .'redactor'
-                            .DIRECTORY_SEPARATOR
-                            .'plugins';
+                        $src = Craft::getAlias('@nystudio107/richvariables/redactor/plugins/'.$versionDir);
                         $event->paths[] = $src;
                     }
                 );
