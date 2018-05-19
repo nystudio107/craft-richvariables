@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2017 nystudio107
  */
 
-namespace nystudio107\richvariables\assetbundles\RichVariables;
+namespace nystudio107\richvariables\assetbundles\richvariables;
 
 use Craft;
 use craft\web\AssetBundle;
