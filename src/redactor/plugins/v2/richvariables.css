@@ -7,13 +7,13 @@
  * @copyright Copyright (c) 2017 nystudio107
  * @link      https://nystudio107.com
  * @package   RichVariables
- * @since     1.0.0
+ * @since     1.0.18
  */
 
 /* -- Use the <ins> tag for our tokenized variables */
 
 .redactor-layer ins,
-.redactor-editor ins {
+.redactor-styles ins {
     text-decoration: none!important;
     background-color: #DDDDDD;
     border-radius: 10px;

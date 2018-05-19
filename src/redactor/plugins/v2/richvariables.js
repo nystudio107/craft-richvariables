@@ -7,37 +7,49 @@
  * @copyright Copyright (c) 2017 nystudio107
  * @link      https://nystudio107.com
  * @package   RichVariables
- * @since     1.0.0
+ * @since     1.0.18
  */
 
-if (!RedactorPlugins) var RedactorPlugins = {};
+(function($R)
+{
+    $R.add('plugin', 'richvariables', {
+        translations: {
+            en: {
+                "variables": "Variables"
+            }
+        },
+        init: function(app)
+        {
+            this.app = app;
+            this.lang = app.lang;
+            this.inline = app.inline;
+            this.toolbar = app.toolbar;
+            this.insertion = app.insertion;
 
-// Grab the globals set Reference Tags from our controller
-var request = new XMLHttpRequest();
-request.open('GET', Craft.getActionUrl('rich-variables'), false);
-request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-    } else {
-    }
-};
-request.send();
-
-// Add our Redactor plugin
-RedactorPlugins.richvariables = function() {
-    return {
-        init: function() {
+            // Grab the globals set Reference Tags from our controller
+            var request = new XMLHttpRequest();
+            request.open('GET', Craft.getActionUrl('rich-variables'), false);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                } else {
+                }
+            };
+            request.send();
+            this.request = request;
+        },
+        start: function()
+        {
             var dropdown = {};
-            var responseVars = JSON.parse(request.responseText);
-            var _this = this;
+            var responseVars = JSON.parse(this.request.responseText);
 
             // Iterate through each menu item, adding them to our dropdown
             responseVars.variablesList.forEach(function(menuItem, index) {
                 var key = 'point' + (index + 1);
+                var refTag = '<ins>' + menuItem.text + '</ins>';
                 dropdown[key] = {
                     title: menuItem.title,
-                    func: function(buttonName) {
-                        this.insert.raw('<ins>' + menuItem.text + '</ins>');
-                    },
+                    api: 'plugin.richvariables.insert',
+                    args: refTag
                 };
             });
             // Handle empty menu items
@@ -50,10 +62,15 @@ RedactorPlugins.richvariables = function() {
                 };
             }
             // Add the button and dropdown
-            var button = this.button.add('variables', 'Variables');
-            this.button.addDropdown(button, dropdown);
-            if (responseVars.useIconForMenu)
-                this.button.setIcon(button, '<img src="' + responseVars.menuIconUrl + '" height="16" width="16" style="margin-top: -2px;">');
+            var $button = this.toolbar.addButton('variables', { title: this.lang.get('variables') });
+            $button.setDropdown(dropdown);
+            if (responseVars.useIconForMenu) {
+                $button.setIcon('<img src="' + responseVars.menuIconUrl + '" height="16" width="16" style="margin-top: -2px;">');
+            }
         },
-    };
-};
+        insert: function(refTag)
+        {
+            this.insertion.insertRaw(refTag);
+        }
+    });
+})(Redactor);
