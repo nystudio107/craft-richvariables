@@ -14,14 +14,18 @@ use nystudio107\richvariables\RichVariables;
 use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
-use craft\web\Controller;
+use craft\base\Field;
 use craft\helpers\Json;
 use craft\fields\PlainText as PlainTextField;
 use craft\fields\Number as NumberField;
 use craft\fields\Date as DateField;
 use craft\fields\Dropdown as DropdownField;
-use craft\redactor\Field as RedactorField;
-use craft\ckeditor\Field as CKEditorField;
+use craft\web\Controller;
+
+use /** @noinspection PhpUndefinedNamespaceInspection */
+    craft\redactor\Field as RedactorField;
+use /** @noinspection PhpUndefinedNamespaceInspection */
+    craft\ckeditor\Field as CKEditorField;
 
 use yii\base\InvalidConfigException;
 
@@ -66,19 +70,21 @@ class DefaultController extends Controller
             }
         }
         if ($globalsSet) {
-            // Get the fieldlayout fields used for this global set
-            $fieldLayoutFields = $globalsSet->getFieldLayout()->getFields();
-            foreach ($fieldLayoutFields as $fieldLayoutField) {
-                // Get the actual field, and check that it's type is something we support
-                $field = Craft::$app->getFields()->getFieldById($fieldLayoutField->id);
-                foreach (self::VALID_FIELD_CLASSES as $fieldClass) {
-                    if ($field instanceof $fieldClass) {
-                        // Add the field title and Reference Tag as per https://craftcms.com/docs/reference-tags
-                        $thisVar = [
-                            'title' => $field->name,
-                            'text' => "{globalset:".$globalsSet->attributes['id'].":".$field->handle."}",
-                        ];
-                        $variablesList[] = $thisVar;
+            // Get the field layout fields used for this global set
+            $layout = $globalsSet->getFieldLayout();
+            if ($layout) {
+                $fieldLayoutFields = $layout->getFields();
+                /** @var Field $field */
+                foreach ($fieldLayoutFields as $field) {
+                    foreach (self::VALID_FIELD_CLASSES as $fieldClass) {
+                        if ($field instanceof $fieldClass) {
+                            // Add the field title and Reference Tag as per https://craftcms.com/docs/reference-tags
+                            $thisVar = [
+                                'title' => $field->name,
+                                'text' => '{globalset:'.$globalsSet->attributes['id'].':'.$field->handle.'}',
+                            ];
+                            $variablesList[] = $thisVar;
+                        }
                     }
                 }
             }
@@ -88,8 +94,12 @@ class DefaultController extends Controller
         try {
             Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
         } catch (InvalidConfigException $e) {
+            Craft::error($e->getMessage(), __METHOD__);
         }
-        $menuIconUrl = Craft::$app->assetManager->getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true).'/img/RichVariables-icon.svg';
+        $menuIconUrl = Craft::$app->assetManager->getPublishedUrl(
+            '@nystudio107/richvariables/assetbundles/richvariables/dist',
+            true
+        ).'/img/RichVariables-icon.svg';
 
         // Return everything to our JavaScript encoded as JSON
         $result['variablesList'] = $variablesList;
