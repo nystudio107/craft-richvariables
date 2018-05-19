@@ -2,8 +2,9 @@
 
 ## 1.0.18 - 2018.05.18
 ### Changed
-* Install event handlers after all plugins have loaded
+* Added support for Redactor 2.x plugin from Pixel & Tonic
 * Refactor to load JS/CSS conditionally based on the version of the Redactor plugin
+* Install event handlers after all plugins have loaded
 * Fixed missing translations
 
 ## 1.0.17 - 2018.03.02
