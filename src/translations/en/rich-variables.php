@@ -14,5 +14,6 @@
  * @since     1.0.0
  */
 return [
-    'Rich Variables plugin loaded' => 'Rich Variables plugin loaded',
+    '{name} plugin loaded' => '{name} plugin loaded',
+    'Use Icon for Menu' => 'Use Icon for Menu'
 ];
