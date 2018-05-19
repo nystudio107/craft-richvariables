@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.19 - 2018.05.19
+### Changed
+* Fixed a regression in the Settings that caused an exception to be thrown
+
 ## 1.0.18 - 2018.05.18
 ### Changed
 * Added support for Redactor 2.x plugin from Pixel & Tonic
