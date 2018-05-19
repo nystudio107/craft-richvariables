@@ -10,9 +10,6 @@
 
 namespace nystudio107\richvariables\models;
 
-use nystudio107\richvariables\RichVariables;
-
-use Craft;
 use craft\base\Model;
 
 /**
@@ -41,7 +38,7 @@ class Settings extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             ['globalSetHandle', 'string'],
