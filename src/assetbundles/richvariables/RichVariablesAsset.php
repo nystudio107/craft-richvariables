@@ -10,7 +10,6 @@
 
 namespace nystudio107\richvariables\assetbundles\richvariables;
 
-use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 use craft\redactor\assets\redactor\RedactorAsset;
