@@ -1,7 +1,14 @@
 # Rich Variables Changelog
 
+## 1.0.18 - 2018.05.18
+### Changed
+* Added support for Redactor 2.x plugin from Pixel & Tonic
+* Refactor to load JS/CSS conditionally based on the version of the Redactor plugin
+* Install event handlers after all plugins have loaded
+* Fixed missing translations
+
 ## 1.0.17 - 2018.03.02
-### Added
+### Changed
 * Fixed the controller URL which stopped working in Craft CMS 3 RC13
 * Fixed deprecation errors from Craft CMS 3 RC13
 * Code cleanup

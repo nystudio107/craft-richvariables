@@ -18,8 +18,8 @@
 
 {{ forms.selectField({
     first: true,
-    label: 'Globals Set',
-    instructions: 'Choose the Globals Set that should be available for insertion into Rich Text fields',
+    label: 'Globals Set't('rich-variables'),
+    instructions: 'Choose the Globals Set that should be available for insertion into Rich Text fields'|t('rich-variables'),
     id: 'globalSetHandle',
     name: 'globalSetHandle',
     options: globalsSets,
@@ -27,8 +27,8 @@
 }) }}
 
 {{ forms.lightswitchField({
-    label: "Use Icon for Menu"|t('rich-variables'),
-    instructions: "Controls whether the Rich Variables menu should display itself as an icon or text" |t,
+    label: 'Use Icon for Menu'|t('rich-variables'),
+    instructions: 'Controls whether the Rich Variables menu should display itself as an icon or text'|t('rich-variables'),
     id: 'useIconForMenu',
     name: 'useIconForMenu',
     on: settings['useIconForMenu'],

@@ -15,13 +15,15 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
-use craft\helpers\FileHelper;
 use craft\redactor\events\RegisterPluginPathsEvent;
 use craft\redactor\Field as RichText;
+use craft\services\Plugins;
 
 use yii\base\Event;
+
+use Composer\Semver\Comparator;
+use yii\base\Exception;
+use yii\base\InvalidConfigException;
 
 /**
  * Class RichVariables
@@ -32,14 +34,6 @@ use yii\base\Event;
  */
 class RichVariables extends Plugin
 {
-    // Constants
-    // =========================================================================
-
-    const REDACTOR_PLUGIN_FILES = [
-        'richvariables.css',
-        'richvariables.js',
-    ];
-
     // Static Properties
     // =========================================================================
 
@@ -61,26 +55,16 @@ class RichVariables extends Plugin
 
         // Only load for AdminCP, non-console requests
         $request = Craft::$app->getRequest();
-        if ($request->getIsCpRequest() && !$request->getIsConsoleRequest()) {
-            // Make sure the Redactor plugin is installed
-            if (Craft::$app->getPlugins()->getPlugin('redactor')) {
-                // Event handler: RichText::EVENT_REGISTER_PLUGIN_PATHS
-                Event::on(
-                    RichText::class,
-                    RichText::EVENT_REGISTER_PLUGIN_PATHS,
-                    function (RegisterPluginPathsEvent $event) {
-                        // Add the path to our Redactor plugin
-                        $src = Craft::getAlias('@nystudio107/richvariables')
-                            .DIRECTORY_SEPARATOR
-                            .'redactor'
-                            .DIRECTORY_SEPARATOR
-                            .'plugins';
-                        $event->paths[] = $src;
-                    }
-                );
-                // Register our asset bundle
-                Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
-            }
+        if ($request->getIsCpRequest()) {
+            // Handler: Plugins::EVENT_AFTER_LOAD_PLUGINS
+            Event::on(
+                Plugins::class,
+                Plugins::EVENT_AFTER_LOAD_PLUGINS,
+                function () {
+                    // Add in our event listeners that are needed for every request
+                    $this->installEventListeners();
+                }
+            );
         }
         Craft::info(
             Craft::t(
@@ -94,6 +78,36 @@ class RichVariables extends Plugin
 
     // Protected Methods
     // =========================================================================
+
+    protected function installEventListeners()
+    {
+        // Make sure the Redactor plugin is installed
+        $redactor = Craft::$app->getPlugins()->getPlugin('redactor');
+        if ($redactor) {
+            // Event handler: RichText::EVENT_REGISTER_PLUGIN_PATHS
+            Event::on(
+                RichText::class,
+                RichText::EVENT_REGISTER_PLUGIN_PATHS,
+                function (RegisterPluginPathsEvent $event) {
+                    /** @var Plugin $redactor */
+                    $redactor = Craft::$app->getPlugins()->getPlugin('redactor');
+                    $versionDir = 'v1/';
+                    if (Comparator::greaterThanOrEqualTo($redactor->version, '2.0.0')) {
+                        $versionDir = 'v2/';
+                    }
+                    // Add the path to our Redactor plugin
+                    $src = Craft::getAlias('@nystudio107/richvariables/redactor/plugins/'.$versionDir);
+                    $event->paths[] = $src;
+                }
+            );
+            // Register our asset bundle
+            try {
+                Craft::$app->getView()->registerAssetBundle(RichVariablesAsset::class);
+            } catch (InvalidConfigException $e) {
+                Craft::error($e->getMessage(), __METHOD__);
+            }
+        }
+    }
 
     /**
      * @inheritdoc
@@ -116,14 +130,20 @@ class RichVariables extends Plugin
         }
 
         // Render our settings template
-        return Craft::$app->view->renderTemplate(
-            'rich-variables'
-            .DIRECTORY_SEPARATOR
-            .'settings',
-            [
-                'settings'    => $this->getSettings(),
-                'globalsSets' => $globalsHandles,
-            ]
-        );
+        try {
+            return Craft::$app->view->renderTemplate(
+                'rich-variables/settings',
+                [
+                    'settings' => $this->getSettings(),
+                    'globalsSets' => $globalsHandles,
+                ]
+            );
+        } catch (\Twig_Error_Loader $e) {
+            Craft::error($e->getMessage(), __METHOD__);
+        } catch (Exception $e) {
+            Craft::error($e->getMessage(), __METHOD__);
+        }
+
+        return '';
     }
 }
