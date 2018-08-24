@@ -99,7 +99,7 @@ class DefaultController extends Controller
         $menuIconUrl = Craft::$app->assetManager->getPublishedUrl(
             '@nystudio107/richvariables/assetbundles/richvariables/dist',
             true
-        ).'/img/RichVariables-icon.svg';
+        ).'/img/RichVariables-menu-icon.svg';
 
         // Return everything to our JavaScript encoded as JSON
         $result['variablesList'] = $variablesList;
