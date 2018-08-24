@@ -1,8 +1,8 @@
 <?php
 /**
- * ImageOptimize plugin for Craft CMS 3.x
+ * Rich Variables plugin for Craft CMS 3.x
  *
- * Automatically optimize images after they've been transformed
+ * Allows you to easily use Craft Globals as variables in Rich Text fields
  *
  * @link      https://nystudio107.com
  * @copyright Copyright (c) 2017 nystudio107
@@ -17,8 +17,8 @@ use yii\web\Response;
 
 /**
  * @author    nystudio107
- * @package   Retour
- * @since     3.0.0
+ * @package   RichVariables
+ * @since     1.0.0
  */
 class CpNavController extends Controller
 {
