@@ -8,7 +8,7 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
-**Note**: _This plugin costs $19.00 in the Craft plugin store._
+**Note**: _The license fee for this plugin is $19.00 via the Craft Plugin Store._
 
 ## Requirements
 
