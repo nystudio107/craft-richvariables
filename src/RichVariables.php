@@ -211,7 +211,7 @@ class RichVariables extends Plugin
             return Craft::$app->view->renderTemplate(
                 'rich-variables/settings',
                 [
-                    'settings' => $this->getSettings(),
+                    'settings'    => $this->getSettings(),
                     'globalsSets' => $globalsHandles,
                 ]
             );
