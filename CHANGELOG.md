@@ -1,5 +1,13 @@
 # Rich Variables Changelog
 
+## 1.0.20 - 2018.08.23
+### Added
+* Added welcome screen after install
+
+### Changed
+* Moved to a modern webpack build config for the AdminCP
+* Added install confetti
+
 ## 1.0.19 - 2018.05.19
 ### Changed
 * Fixed a regression in the Settings that caused an exception to be thrown
