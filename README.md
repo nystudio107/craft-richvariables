@@ -8,11 +8,11 @@ Allows you to easily use Craft Globals as variables in Rich Text fields
 
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
-**Note**: _This plugin will cost $19.00 once Craft 3 GA is released._
+**Note**: _This plugin costs $19.00 in the Craft plugin store._
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-RC1 or later.
+This plugin requires Craft CMS 3.0.0 or later.
 
 ## Installation
 
