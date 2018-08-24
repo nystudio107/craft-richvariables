@@ -15,15 +15,19 @@ use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 
 use Craft;
 use craft\base\Plugin;
+use craft\events\PluginEvent;
+use craft\events\RegisterUrlRulesEvent;
+use craft\helpers\UrlHelper;
 use craft\redactor\events\RegisterPluginPathsEvent;
 use craft\redactor\Field as RichText;
 use craft\services\Plugins;
+use craft\web\UrlManager;
 
 use yii\base\Event;
-
-use Composer\Semver\Comparator;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
+
+use Composer\Semver\Comparator;
 
 /**
  * Class RichVariables
@@ -53,19 +57,9 @@ class RichVariables extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        // Only load for AdminCP, non-console requests
-        $request = Craft::$app->getRequest();
-        if ($request->getIsCpRequest()) {
-            // Handler: Plugins::EVENT_AFTER_LOAD_PLUGINS
-            Event::on(
-                Plugins::class,
-                Plugins::EVENT_AFTER_LOAD_PLUGINS,
-                function () {
-                    // Add in our event listeners that are needed for every request
-                    $this->installEventListeners();
-                }
-            );
-        }
+        // Add in our event listeners that are needed for every request
+        $this->installEventListeners();
+        // We're loaded!
         Craft::info(
             Craft::t(
                 'rich-variables',
@@ -79,7 +73,90 @@ class RichVariables extends Plugin
     // Protected Methods
     // =========================================================================
 
+    /**
+     * Install our event listeners
+     */
     protected function installEventListeners()
+    {
+        // Handler: Plugins::EVENT_AFTER_INSTALL_PLUGIN
+        Event::on(
+            Plugins::class,
+            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
+            function (PluginEvent $event) {
+                if ($event->plugin === $this) {
+                    $request = Craft::$app->getRequest();
+                    if ($request->isCpRequest) {
+                        Craft::$app->getResponse()->redirect(UrlHelper::cpUrl('rich-variables/welcome'))->send();
+                    }
+                }
+            }
+        );
+        $request = Craft::$app->getRequest();
+        // Install only for non-console site requests
+        if ($request->getIsSiteRequest() && !$request->getIsConsoleRequest()) {
+            $this->installSiteEventListeners();
+        }
+        // Install only for non-console AdminCP requests
+        if ($request->getIsCpRequest() && !$request->getIsConsoleRequest()) {
+            $this->installCpEventListeners();
+        }
+    }
+
+    /**
+     * Install site event listeners for site requests only
+     */
+    protected function installSiteEventListeners()
+    {
+        // Handler: UrlManager::EVENT_REGISTER_SITE_URL_RULES
+        Event::on(
+            UrlManager::class,
+            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
+            function (RegisterUrlRulesEvent $event) {
+                Craft::debug(
+                    'UrlManager::EVENT_REGISTER_SITE_URL_RULES',
+                    __METHOD__
+                );
+                // Register our AdminCP routes
+                $event->rules = array_merge(
+                    $event->rules,
+                    $this->customFrontendRoutes()
+                );
+            }
+        );
+    }
+
+    /**
+     * Install site event listeners for AdminCP requests only
+     */
+    protected function installCpEventListeners()
+    {
+        // Handler: Plugins::EVENT_AFTER_LOAD_PLUGINS
+        Event::on(
+            Plugins::class,
+            Plugins::EVENT_AFTER_LOAD_PLUGINS,
+            function () {
+                $this->installRedactorPlugin();
+            }
+        );
+    }
+
+    /**
+     * Return the custom frontend routes
+     *
+     * @return array
+     */
+    protected function customFrontendRoutes(): array
+    {
+        return [
+            // Make webpack async bundle loading work out of published AssetBundles
+            '/cpresources/rich-variables/<resourceType:{handle}>/<fileName>' => 'rich-variables/cp-nav/resource',
+        ];
+    }
+
+    /**
+     * Install our Redactor plugin
+     */
+    protected function installRedactorPlugin()
     {
         // Make sure the Redactor plugin is installed
         $redactor = Craft::$app->getPlugins()->getPlugin('redactor');

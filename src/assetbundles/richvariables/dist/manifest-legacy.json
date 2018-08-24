@@ -1,0 +1,14 @@
+{
+  "vendors~confetti~vue.js": "/cpresources/rich-variables/js/vendors~confetti~vue-legacy.1e150b9a3825a680b683.js",
+  "vendors~confetti~vue.js.map": "/cpresources/rich-variables/js/vendors~confetti~vue-legacy.1e150b9a3825a680b683.js.map",
+  "richvariables.css": "/cpresources/rich-variables/css/richvariables.487cee399d9fa5ebeede.css",
+  "richvariables.js": "/cpresources/rich-variables/js/richvariables-legacy.487cee399d9fa5ebeede.js",
+  "richvariables.js.map": "/cpresources/rich-variables/js/richvariables-legacy.487cee399d9fa5ebeede.js.map",
+  "welcome.js": "/cpresources/rich-variables/js/welcome-legacy.047af0e7c533881ac9fe.js",
+  "welcome.js.map": "/cpresources/rich-variables/js/welcome-legacy.047af0e7c533881ac9fe.js.map",
+  "confetti.js": "/cpresources/rich-variables/js/confetti-legacy.7effe4eca45663228595.js",
+  "confetti.js.map": "/cpresources/rich-variables/js/confetti-legacy.7effe4eca45663228595.js.map",
+  "css/richvariables.487cee399d9fa5ebeede.css.map": "/cpresources/rich-variables/css/richvariables.487cee399d9fa5ebeede.css.map",
+  "../../../templates/_includes/include-legacy-module.twig": "/cpresources/rich-variables/../../../templates/_includes/include-legacy-module.twig",
+  "../../../templates/_includes/include-css-module.twig": "/cpresources/rich-variables/../../../templates/_includes/include-css-module.twig"
+}
