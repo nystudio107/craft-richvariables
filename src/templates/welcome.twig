@@ -1,0 +1,43 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{% extends 'rich-variables/_layouts/richvariables-cp.twig' %}
+
+{% from "rich-variables/_includes/macros.twig" import includeJsModule %}
+
+{% set title = 'Welcome to Rich Variables!' %}
+
+{% set docsUrl = "https://github.com/nystudio107/craft-richvariables/blob/v1/README.md" %}
+{% set linkGetStarted = url('settings/plugins/rich-variables') %}
+
+{% do view.registerAssetBundle("nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesWelcomeAsset") %}
+{% set baseAssetsUrl = view.getAssetManager().getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true) %}
+
+{% set crumbs = [
+    { label: "Rich Variables", url: url('rich-variables') },
+    { label: "Welcome"|t, url: url('rich-variables/welcome') },
+] %}
+
+{% block content %}
+    <div id="cp-nav-content" class="readable" style="text-align:center; margin:0 auto; padding: 5% 10%;">
+        <confetti>
+        </confetti>
+        <img src="{{ baseAssetsUrl ~ '/img/RichVariables-icon.svg' }}" width="30%" height="auto" />
+        <h2>Thanks for using Rich Variables!</h2>
+        <p>Rich Variables allows you to easily use Craft Globals as variables in Rich Text fields.</p>
+
+        <p>For more information, please <a href="{{ docsUrl }}" target="_blank" rel="noopener">see the documentation</a>.</p>
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            <a href="{{ linkGetStarted }}"><button class="btn submit">Get Started</button></a>
+        </p>
+    </div>
+    <div style="text-align:center; margin:0 auto; padding: 0;">
+        <p class="instructions">
+            Brought to you by <a href="http://nystudio107.com" target="_blank" rel="noopener">nystudio107</a>
+        </p>
+    </div>
+    {# include our JavaScript modules #}
+    {{ parent() }}
+    {{ includeJsModule("welcome") }}
+{% endblock %}

@@ -1,8 +1,8 @@
 <?php
 /**
- * Rich Variables plugin for Craft CMS 3.x
+ * Image Optimize plugin for Craft CMS 3.x
  *
- * Allows you to easily use Craft Globals as variables in Rich Text fields
+ * Automatically optimize images after they've been transformed
  *
  * @link      https://nystudio107.com
  * @copyright Copyright (c) 2017 nystudio107
@@ -12,14 +12,13 @@ namespace nystudio107\richvariables\assetbundles\richvariables;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
-use craft\redactor\assets\redactor\RedactorAsset;
 
 /**
  * @author    nystudio107
- * @package   RichVariables
- * @since     1.0.0
+ * @package   ImageOptimize
+ * @since     1.2.0
  */
-class RichVariablesAsset extends AssetBundle
+class RichVariablesWelcomeAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -29,14 +28,11 @@ class RichVariablesAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@nystudio107/richvariables/assetbundles/richvariables/dist";
+        $this->sourcePath = '@nystudio107/richvariables/assetbundles/richvariables/dist';
 
         $this->depends = [
             CpAsset::class,
-            RedactorAsset::class,
-        ];
-
-        $this->js = [
+            RichVariablesAsset::class,
         ];
 
         parent::init();

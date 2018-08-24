@@ -1,0 +1,13 @@
+{% macro includeLegacyModule(jsModuleName) -%}
+    {% set hashLookup = {
+        
+        
+            "richvariables": "/cpresources/rich-variables/js/richvariables-legacy.487cee399d9fa5ebeede.js",
+        
+            "welcome": "/cpresources/rich-variables/js/welcome-legacy.047af0e7c533881ac9fe.js",
+        
+    } %}
+    {# Older browsers load this file (and module-supporting #}
+    {# browsers know *not* to load this file). #}
+    <script nomodule src="{{ hashLookup[jsModuleName] }}"></script>
+{%- endmacro includeLegacyModule %}

@@ -14,8 +14,9 @@
  * @since     1.0.0
  */
 return [
-    '{name} plugin loaded' => '{name} plugin loaded',
-    'Use Icon for Menu' => 'Use Icon for Menu',
-    'Controls whether the Rich Variables menu should display itself as an icon or text' => 'Controls whether the Rich Variables menu should display itself as an icon or text',
-    'Choose the Globals Set that should be available for insertion into Rich Text fields' => 'Choose the Globals Set that should be available for insertion into Rich Text fields'
+    '{name} plugin loaded'                                                                => '{name} plugin loaded',
+    'Use Icon for Menu'                                                                   => 'Use Icon for Menu',
+    'Controls whether the Rich Variables menu should display itself as an icon or text'   => 'Controls whether the Rich Variables menu should display itself as an icon or text',
+    'Choose the Globals Set that should be available for insertion into Rich Text fields' => 'Choose the Globals Set that should be available for insertion into Rich Text fields',
+    'Globals Set'                                                                         => 'Globals Set'
 ];
