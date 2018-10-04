@@ -12,6 +12,7 @@ namespace nystudio107\richvariables;
 
 use nystudio107\richvariables\models\Settings;
 use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
+use nystudio107\richvariables\variables\RichVariablesVariable;
 
 use Craft;
 use craft\base\Plugin;
@@ -21,6 +22,7 @@ use craft\helpers\UrlHelper;
 use craft\redactor\events\RegisterPluginPathsEvent;
 use craft\redactor\Field as RichText;
 use craft\services\Plugins;
+use craft\web\twig\variables\CraftVariable;
 use craft\web\UrlManager;
 
 use yii\base\Event;
@@ -78,6 +80,15 @@ class RichVariables extends Plugin
      */
     protected function installEventListeners()
     {
+        Event::on(
+            CraftVariable::class,
+            CraftVariable::EVENT_INIT,
+            function (Event $event) {
+                /** @var CraftVariable $variable */
+                $variable = $event->sender;
+                $variable->set('richVariables', RichVariablesVariable::class);
+            }
+        );
         // Handler: Plugins::EVENT_AFTER_INSTALL_PLUGIN
         Event::on(
             Plugins::class,
@@ -149,7 +160,7 @@ class RichVariables extends Plugin
     {
         return [
             // Make webpack async bundle loading work out of published AssetBundles
-            '/cpresources/rich-variables/<resourceType:{handle}>/<fileName>' => 'rich-variables/cp-nav/resource',
+            '/cpresources/rich-variables/<resourceType:{handle}>/<fileName>' => 'rich-variables/manifest/resource',
         ];
     }
 

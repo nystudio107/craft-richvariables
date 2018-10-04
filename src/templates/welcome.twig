@@ -1,8 +1,6 @@
 {# @var craft \craft\web\twig\variables\CraftVariable #}
 {% extends 'rich-variables/_layouts/richvariables-cp.twig' %}
 
-{% from "rich-variables/_includes/macros.twig" import includeJsModule %}
-
 {% set title = 'Welcome to Rich Variables!' %}
 
 {% set docsUrl = "https://github.com/nystudio107/craft-richvariables/blob/v1/README.md" %}
@@ -39,5 +37,5 @@
     </div>
     {# include our JavaScript modules #}
     {{ parent() }}
-    {{ includeJsModule("welcome") }}
+    {{ craft.richVariables.includeJsModule("welcome.js", true) }}
 {% endblock %}
