@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.21 - 2018.10.05
+### Changed
+* Updated build process
+
 ## 1.0.20 - 2018.08.23
 ### Added
 * Added welcome screen after install

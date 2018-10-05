@@ -1,14 +1,8 @@
 {% extends "_layouts/cp" %}
 
-{% set welcomeJs = "welcome" %}
-{% set welcomeLegacyJs = "welcome-legacy" %}
-
-{% from "rich-variables/_includes/macros.twig" import includeJsModule %}
-{% from "rich-variables/_includes/macros.twig" import includeCssModule %}
-
 {% block head %}
     {{ parent() }}
-    {{ includeCssModule("richvariables") }}
-    {% include "rich-variables/_includes/safari-nomodule-fix.twig" %}
-    {{ includeJsModule("richvariables") }}
+    {{ craft.richVariables.includeCssModule("styles.css") }}
+    {{ craft.richVariables.includeSafariNomoduleFix() }}
+    {{ craft.richVariables.includeJsModule("richvariables.js", true) }}
 {% endblock %}

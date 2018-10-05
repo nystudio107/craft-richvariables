@@ -1,11 +1,10 @@
 {
-  "vendors~confetti~vue.js": "/cpresources/rich-variables/js/vendors~confetti~vue.e4b60206a8f8df1d6205.js",
-  "vendors~confetti~vue.js.map": "/cpresources/rich-variables/js/vendors~confetti~vue.e4b60206a8f8df1d6205.js.map",
-  "richvariables.js": "/cpresources/rich-variables/js/richvariables.349d097d92d933b11304.js",
-  "richvariables.js.map": "/cpresources/rich-variables/js/richvariables.349d097d92d933b11304.js.map",
-  "welcome.js": "/cpresources/rich-variables/js/welcome.ee7b95fbdde1ed105bed.js",
-  "welcome.js.map": "/cpresources/rich-variables/js/welcome.ee7b95fbdde1ed105bed.js.map",
-  "confetti.js": "/cpresources/rich-variables/js/confetti.d22ddf7efb5622515184.js",
-  "confetti.js.map": "/cpresources/rich-variables/js/confetti.d22ddf7efb5622515184.js.map",
-  "../../../templates/_includes/include-modern-module.twig": "/cpresources/rich-variables/../../../templates/_includes/include-modern-module.twig"
+  "vendors~confetti~vue.js": "/cpresources/rich-variables/js/vendors~confetti~vue.fdc3565b6903d8b98227.js",
+  "vendors~confetti~vue.js.map": "/cpresources/rich-variables/js/vendors~confetti~vue.fdc3565b6903d8b98227.js.map",
+  "richvariables.js": "/cpresources/rich-variables/js/richvariables.1542f36db96a43bac400.js",
+  "richvariables.js.map": "/cpresources/rich-variables/js/richvariables.1542f36db96a43bac400.js.map",
+  "welcome.js": "/cpresources/rich-variables/js/welcome.018f3658f98b5f18e9d7.js",
+  "welcome.js.map": "/cpresources/rich-variables/js/welcome.018f3658f98b5f18e9d7.js.map",
+  "confetti.js": "/cpresources/rich-variables/js/confetti.ff20afd79e7fe0c8a2bc.js",
+  "confetti.js.map": "/cpresources/rich-variables/js/confetti.ff20afd79e7fe0c8a2bc.js.map"
 }
