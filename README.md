@@ -4,7 +4,7 @@
 
 Allows you to easily use Craft Globals as variables in Rich Text fields
 
-![Screenshot](resources/img/plugin-logo.png)
+![Screenshot](resources/img/plugin-banner.jpg)
 
 Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvariables)
 
