@@ -21,7 +21,7 @@ To install Rich Variables, follow these steps:
 1. Install with Composer via `composer require nystudio107/craft-richvariables` from your project directory
 2. Install plugin in the Craft Control Panel under Settings > Plugins
 
-You can also install Rich Variables via the **Plugin Store** in the Craft AdminCP.
+You can also install Rich Variables via the **Plugin Store** in the Craft Control Panel.
 
 Rich Variables works on Craft 3.x
 
