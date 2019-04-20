@@ -226,9 +226,9 @@ class RichVariables extends Plugin
                     'globalsSets' => $globalsHandles,
                 ]
             );
-        } catch (\Twig_Error_Loader $e) {
+        } catch (\Twig\Error\LoaderError $e) {
             Craft::error($e->getMessage(), __METHOD__);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             Craft::error($e->getMessage(), __METHOD__);
         }
 
