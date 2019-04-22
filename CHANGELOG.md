@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.22 - 2019.04.22
+### Changed
+* Updated Twig namespacing to be compliant with deprecated class aliases in 2.7.x
+
 ## 1.0.21 - 2018.10.05
 ### Changed
 * Updated build process
@@ -10,7 +14,7 @@
 * Added a new b&w menu icon to match Redactor styles
 
 ### Changed
-* Moved to a modern webpack build config for the AdminCP
+* Moved to a modern webpack build config for the Control Panel
 * Added install confetti
 
 ## 1.0.19 - 2018.05.19
@@ -36,7 +40,7 @@
 
 ## 1.0.15 - 2017.12.12
 ### Changed
-* Only load our AssetBundle on non-console AdminCP requests
+* Only load our AssetBundle on non-console Control Panel requests
 
 ## 1.0.14 - 2017.12.06
 ### Changed
