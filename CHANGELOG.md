@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.23 - 2019.05.24
+### Changed
+* Updated build system
+
 ## 1.0.22 - 2019.04.22
 ### Changed
 * Updated Twig namespacing to be compliant with deprecated class aliases in 2.7.x
