@@ -15,9 +15,9 @@
     "author": "andrew@nystudio107.com",
     "license": "proprietary",
     "bugs": {
-        "url": "https://github.com/nystudio107/craft-richvariables/issues"
+        "url": "https://nystudio107.com/plugins/rich-variables/support"
     },
-    "homepage": "https://github.com/nystudio107/craft-richvariables",
+    "homepage": "https://nystudio107.com/plugins/rich-variables",
     "paths": {
         "src": {
             "base": "./src/assetbundles/richvariables/src/",
