@@ -46,11 +46,12 @@ Next, you need to tell Rich Variables which Globals set (you can have an arbitra
 Finally, we'll need to let Redactor (the Craft 2.x Rich Text editor) know that we want to use the Rich Variables plugin. You can do this by editing the Redactor settings in `craft/config/redactor/`. Make sure you edit the settings that your Rich Text fields use to add `richvariables` to the `plugins` array.
 
 For example, here's what my `Standard.json` Redactor settings looks like:
-
+```json
     {
         "buttons": ["format","kbd","bold","italic","lists","link","file","horizontalrule"],
         "plugins": ["source","fullscreen","richvariables"]
     }
+```
 
 Note that `richvariables` was added to the `plugins` array above.
 
