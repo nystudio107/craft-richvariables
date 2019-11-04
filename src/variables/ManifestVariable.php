@@ -18,7 +18,7 @@ class ManifestVariable
         'useDevServer' => true,
         // Manifest names
         'manifest'     => [
-            'legacy' => 'manifest-legacy.json',
+            'legacy' => 'manifest.json',
             'modern' => 'manifest.json',
         ],
         // Public server config
@@ -43,7 +43,16 @@ class ManifestVariable
     {
         ManifestHelper::invalidateCaches();
         $bundle = new RichVariablesAsset();
+        $baseAssetsUrl = Craft::$app->assetManager->getPublishedUrl(
+            $bundle->sourcePath,
+            true
+        );
         self::$config['server']['manifestPath'] = Craft::getAlias($bundle->sourcePath);
+        self::$config['server']['publicPath'] = $baseAssetsUrl;
+        $useDevServer = getenv('NYS_PLUGIN_DEVSERVER');
+        if ($useDevServer !== false) {
+            self::$config['useDevServer'] = (bool)$useDevServer;
+        }
     }
 
     /**
