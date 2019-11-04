@@ -3,6 +3,7 @@
 {% block head %}
     {{ parent() }}
     {{ craft.richVariables.includeCssModule("styles.css") }}
-    {{ craft.richVariables.includeSafariNomoduleFix() }}
-    {{ craft.richVariables.includeJsModule("richvariables.js", true) }}
+    {{ craft.richVariables.includeCssModule("vendor.css") }}
+    {{ craft.richVariables.includeJsModule("vendor.js", false) }}
+    {{ craft.richVariables.includeJsModule("richvariables.js", false) }}
 {% endblock %}

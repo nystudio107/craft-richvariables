@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.24 - 2019.11.04
+### Changed
+* Updated to latest npm dependencies via `npm audit fix`
+
 ## 1.0.23 - 2019.05.24
 ### Changed
 * Updated build system
