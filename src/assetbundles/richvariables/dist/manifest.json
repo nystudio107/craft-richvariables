@@ -1,10 +1,13 @@
 {
-  "vendors~confetti~vue.js": "/cpresources/rich-variables/js/vendors~confetti~vue.fdc3565b6903d8b98227.js",
-  "vendors~confetti~vue.js.map": "/cpresources/rich-variables/js/vendors~confetti~vue.fdc3565b6903d8b98227.js.map",
-  "richvariables.js": "/cpresources/rich-variables/js/richvariables.1542f36db96a43bac400.js",
-  "richvariables.js.map": "/cpresources/rich-variables/js/richvariables.1542f36db96a43bac400.js.map",
-  "welcome.js": "/cpresources/rich-variables/js/welcome.018f3658f98b5f18e9d7.js",
-  "welcome.js.map": "/cpresources/rich-variables/js/welcome.018f3658f98b5f18e9d7.js.map",
-  "confetti.js": "/cpresources/rich-variables/js/confetti.ff20afd79e7fe0c8a2bc.js",
-  "confetti.js.map": "/cpresources/rich-variables/js/confetti.ff20afd79e7fe0c8a2bc.js.map"
+  "vendor.js": "js/vendor.js",
+  "vendor.js.map": "js/vendor.js.map",
+  "richvariables.js": "js/richvariables.js",
+  "richvariables.js.map": "js/richvariables.js.map",
+  "styles.css": "css/styles.css",
+  "styles.js": "js/styles.js",
+  "styles.js.map": "js/styles.js.map",
+  "welcome.js": "js/welcome.js",
+  "welcome.js.map": "js/welcome.js.map",
+  "css/styles.css.map": "css/styles.css.map",
+  "img/RichVariables-icon.svg": "img/RichVariables-icon.svg"
 }
