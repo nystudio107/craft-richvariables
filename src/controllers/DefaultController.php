@@ -26,6 +26,8 @@ use /** @noinspection PhpUndefinedNamespaceInspection */
     craft\redactor\Field as RedactorField;
 use /** @noinspection PhpUndefinedNamespaceInspection */
     craft\ckeditor\Field as CKEditorField;
+use /** @noinspection PhpUndefinedNamespaceInspection */
+    aelvan\preparsefield\fields\PreparseFieldType as PreparseField;
 
 use yii\base\InvalidConfigException;
 
@@ -46,6 +48,7 @@ class DefaultController extends Controller
         DropdownField::class,
         RedactorField::class,
         CKEditorField::class,
+        PreparseField::class,
     ];
 
     // Public Methods
