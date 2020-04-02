@@ -1,5 +1,15 @@
 # Rich Variables Changelog
 
+## 1.0.25 - 2020.04.02
+### Added
+* Added back in support for the Preparse field
+
+### Fixed
+* Restored the missing icon from the drop-down menu
+
+### Changed
+* Updated to latest npm dependencies via `npm audit fix` for both the primary app and the docs
+
 ## 1.0.24 - 2019.11.04
 ### Changed
 * Updated to latest npm dependencies via `npm audit fix`

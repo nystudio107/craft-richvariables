@@ -2,7 +2,7 @@ module.exports = {
     title: 'Rich Variables Documentation',
     description: 'Documentation for the Rich Variables plugin',
     base: '/docs/rich-variables/',
-    dest: '../../../../sites/nystudio107/web/docs/rich-variables',
+    dest: '../../../sites/nystudio107/web/docs/rich-variables',
     themeConfig: {
         displayAllHeaders: true,
         sidebar: [

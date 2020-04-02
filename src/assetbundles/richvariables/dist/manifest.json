@@ -9,5 +9,6 @@
   "welcome.js": "js/welcome.js",
   "welcome.js.map": "js/welcome.js.map",
   "css/styles.css.map": "css/styles.css.map",
-  "img/RichVariables-icon.svg": "img/RichVariables-icon.svg"
+  "img/RichVariables-icon.svg": "img/RichVariables-icon.svg",
+  "img/RichVariables-menu-icon.svg": "img/RichVariables-menu-icon.svg"
 }
