@@ -1,7 +1,7 @@
 // Import our CSS
 import styles from '../css/app.pcss';
 import icon from '../img/RichVariables-icon.svg';
-import icon from '../img/RichVariables-menu-icon.svg';
+import menuIcon from '../img/RichVariables-menu-icon.svg';
 
 const main = async () => {
 };
