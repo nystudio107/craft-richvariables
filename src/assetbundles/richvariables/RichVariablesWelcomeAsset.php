@@ -12,6 +12,7 @@ namespace nystudio107\richvariables\assetbundles\richvariables;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
+use craft\web\assets\vue\VueAsset;
 
 /**
  * @author    nystudio107
@@ -32,6 +33,7 @@ class RichVariablesWelcomeAsset extends AssetBundle
 
         $this->depends = [
             CpAsset::class,
+            VueAsset::class,
             RichVariablesAsset::class,
         ];
 
