@@ -1,10 +1,10 @@
 /*!
- * @project        Rich Variables
+ * @project        richvariables
  * @name           richvariables.js
- * @author         undefined
- * @build          Thu, Apr 2, 2020 3:44 PM ET
- * @release        618bde4f3713223bc1d4c7c26ebaa22464f57b2c [develop]
- * @copyright      Copyright (c) 2020 nystudio107
+ * @author         Andrew Welch
+ * @build          Sun Feb 14 2021 04:35:00 GMT+0000 (Coordinated Universal Time)
+ * @copyright      Copyright (c) 2021 ©2020 nystudio107.com
  *
- */!function(e){function r(r){for(var t,i,a=r[0],c=r[1],p=r[2],l=0,s=[];l<a.length;l++)i=a[l],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(t in c)Object.prototype.hasOwnProperty.call(c,t)&&(e[t]=c[t]);for(f&&f(r);s.length;)s.shift()();return u.push.apply(u,p||[]),n()}function n(){for(var e,r=0;r<u.length;r++){for(var n=u[r],t=!0,a=1;a<n.length;a++){var c=n[a];0!==o[c]&&(t=!1)}t&&(u.splice(r--,1),e=i(i.s=n[0]))}return e}var t={},o={1:0},u=[];function i(r){if(t[r])return t[r].exports;var n=t[r]={i:r,l:!1,exports:{}};return e[r].call(n.exports,n,n.exports,i),n.l=!0,n.exports}i.m=e,i.c=t,i.d=function(e,r,n){i.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,r){if(1&r&&(e=i(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var t in e)i.d(n,t,function(r){return e[r]}.bind(null,t));return n},i.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(r,"a",r),r},i.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},i.p="";var a=window.webpackJsonp=window.webpackJsonp||[],c=a.push.bind(a);a.push=r,a=a.slice();for(var p=0;p<a.length;p++)r(a[p]);var f=c;u.push([6,0,2]),n()}({10:function(e,r,n){e.exports=n.p+"img/RichVariables-menu-icon.svg"},6:function(e,r,n){"use strict";n.r(r);var t=n(2),o=n.n(t),u=n(3),i=n.n(u);n(8),n(9),n(10);(function(){var e=i()(o.a.mark((function e(){return o.a.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:case"end":return e.stop()}}),e)})));return function(){return e.apply(this,arguments)}})()().then({})},9:function(e,r,n){e.exports=n.p+"img/RichVariables-icon.svg"}});
+ */
+(self.webpackChunkrichvariables=self.webpackChunkrichvariables||[]).push([[676],{620:function(n,r,e){"use strict";var t=e(757),a=e.n(t),c=(e(666),e(926)),u=e.n(c);e.p,e.p;(function(){var n=u()(a().mark((function n(){return a().wrap((function(n){for(;;)switch(n.prev=n.next){case 0:case"end":return n.stop()}}),n)})));return function(){return n.apply(this,arguments)}})()().then({})}},0,[[620,666,216]]]);
 //# sourceMappingURL=richvariables.js.map
