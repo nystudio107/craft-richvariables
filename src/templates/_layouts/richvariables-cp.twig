@@ -1,9 +1,20 @@
 {% extends "_layouts/cp" %}
 
+{% from 'rich-variables/_includes/macros.twig' import registerJsModules %}
+
 {% block head %}
     {{ parent() }}
-    {{ craft.richVariables.includeCssModule("styles.css") }}
-    {{ craft.richVariables.includeCssModule("vendor.css") }}
-    {{ craft.richVariables.includeJsModule("vendor.js", false) }}
-    {{ craft.richVariables.includeJsModule("richvariables.js", false) }}
+    {{ craft.richVariables.includeCssModule("vendors.css", false) }}
+    {{ craft.richVariables.includeCssModule("styles.css", false) }}
+{% endblock %}
+
+{% block foot %}
+    {{ parent() }}
+    {% set jsModules = [
+        'runtime.js',
+        'vendors.js',
+        'commons.js',
+        'richvariables.js',
+    ] %}
+    {{ registerJsModules(jsModules) }}
 {% endblock %}
