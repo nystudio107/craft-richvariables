@@ -1,6 +1,6 @@
 # Rich Variables Changelog
 
-## 1.0.26 - UNRELEASED
+## 1.0.26 - 2021.02.13
 ### Changed
 * Update to webpack 5 buildchain
 
