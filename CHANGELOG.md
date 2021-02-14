@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.26 - 2021.02.13
+### Changed
+* Update to webpack 5 buildchain
+
 ## 1.0.25 - 2020.04.02
 ### Added
 * Added back in support for the Preparse field
