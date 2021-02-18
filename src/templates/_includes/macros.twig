@@ -6,27 +6,3 @@
         {{ false }}
     {%- endif -%}
 {%- endmacro %}
-
-{% macro registerJsModules(jsModules) -%}
-    {% set includeJsModules = [] %}
-    {% for jsModule in jsModules %}
-        {% set includeJsModules = includeJsModules | merge([craft.richVariables.getModuleUri(jsModule) ?? '']) %}
-    {% endfor %}
-    {% for jsModule in includeJsModules if jsModule %}
-        {% do view.registerJsFile(jsModule, {
-            'depends': 'nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesAsset'
-        }) %}
-    {% endfor %}
-{%- endmacro %}
-
-{% macro registerCssModules(cssModules) -%}
-    {% set includeCssModules = [] %}
-    {% for cssModule in cssModules %}
-        {% set includeCssModules = includeCssModules | merge([craft.richVariables.getModuleUri(cssModule) ?? '']) %}
-    {% endfor %}
-    {% for cssModule in includeCssModules if cssModule %}
-        {% do view.registerCssFile(cssModule, {
-            'depends': 'nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesAsset'
-        }) %}
-    {% endfor %}
-{%- endmacro %}
