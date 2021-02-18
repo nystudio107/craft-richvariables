@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.27 - UNRELEASED
+### Changed
+* Updated build system infra
+
 ## 1.0.26 - 2021.02.13
 ### Changed
 * Update to webpack 5 buildchain
