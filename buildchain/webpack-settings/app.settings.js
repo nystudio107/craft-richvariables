@@ -7,15 +7,12 @@ const path = require('path');
 // settings
 module.exports = {
     alias: {
-        '@css': path.resolve('../src/assetbundles/richvariables/src/css'),
-        '@img': path.resolve('../src/assetbundles/richvariables/src/img'),
-        '@js': path.resolve('../src/assetbundles/richvariables/src/js'),
-        '@vue': path.resolve('../src/assetbundles/richvariables/src/vue'),
+        '@': path.resolve('../src/assetbundles/richvariables/src'),
     },
     copyright: '©2020 nystudio107.com',
     entry: {
-        'richvariables': '@js/RichVariables.js',
-        'welcome': '@js/Welcome.js',
+        'richvariables': '@/js/RichVariables.js',
+        'welcome': '@/js/Welcome.js',
     },
     extensions: ['.ts', '.js', '.vue', '.json'],
     name: 'richvariables',
