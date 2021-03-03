@@ -14,6 +14,8 @@ use nystudio107\richvariables\models\Settings;
 use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 use nystudio107\richvariables\variables\RichVariablesVariable;
 
+use nystudio107\pluginmanifest\services\ManifestService;
+
 use Craft;
 use craft\base\Plugin;
 use craft\events\PluginEvent;
@@ -26,7 +28,6 @@ use craft\web\twig\variables\CraftVariable;
 use craft\web\UrlManager;
 
 use yii\base\Event;
-use yii\base\Exception;
 use yii\base\InvalidConfigException;
 
 use Composer\Semver\Comparator;
@@ -37,6 +38,8 @@ use Composer\Semver\Comparator;
  * @author    nystudio107
  * @package   RichVariables
  * @since     1.0.0
+ *
+ * @property ManifestService         $manifest
  */
 class RichVariables extends Plugin
 {
@@ -80,13 +83,24 @@ class RichVariables extends Plugin
      */
     protected function installEventListeners()
     {
+        // Register the manifest service
+        $this->set('manifest', [
+            'class' => ManifestService::class,
+            'assetClass' => RichVariablesAsset::class,
+            'devServerManifestPath' => 'http://richvariables-buildchain:8080/',
+            'devServerPublicPath' => 'http://richvariables-buildchain:8080/',
+        ]);
+
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
             function (Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
-                $variable->set('richVariables', RichVariablesVariable::class);
+                $variable->set('richVariables', [
+                    'class' => RichVariablesVariable::class,
+                    'manifestService' => $this->manifest,
+                ]);
             }
         );
         // Handler: Plugins::EVENT_AFTER_INSTALL_PLUGIN

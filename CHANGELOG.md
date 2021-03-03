@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.27 - 2021.03.03
+### Changed
+* Dockerized the buildchain, using `craft-plugin-manifest` for the webpack HMR bridge
+
 ## 1.0.26 - 2021.02.13
 ### Changed
 * Update to webpack 5 buildchain

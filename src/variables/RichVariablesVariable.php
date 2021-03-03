@@ -10,6 +10,8 @@
 
 namespace nystudio107\richvariables\variables;
 
+use nystudio107\pluginmanifest\variables\ManifestVariable;
+
 /**
  * @author    nystudio107
  * @package   RichVariables
