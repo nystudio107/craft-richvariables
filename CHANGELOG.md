@@ -2,7 +2,7 @@
 
 ## 1.0.27 - UNRELEASED
 ### Changed
-* Updated build system infra
+* Dockerized the buildchain, using `craft-plugin-manifest` for the webpack HMR bridge
 
 ## 1.0.26 - 2021.02.13
 ### Changed
