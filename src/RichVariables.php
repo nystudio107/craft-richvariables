@@ -87,8 +87,8 @@ class RichVariables extends Plugin
         $this->set('manifest', [
             'class' => ManifestService::class,
             'assetClass' => RichVariablesAsset::class,
-            'devServerManifestPath' => 'http://richvariables-buildchain:8080/',
-            'devServerPublicPath' => 'http://richvariables-buildchain:8080/',
+            'devServerManifestPath' => 'http://craft-richvariables-buildchain:8080/',
+            'devServerPublicPath' => 'http://craft-richvariables-buildchain:8080/',
         ]);
 
         Event::on(
