@@ -35,9 +35,6 @@
     "extra": {
         "name": "Rich Variables",
         "handle": "rich-variables",
-        "schemaVersion": "1.0.0",
-        "hasCpSettings": true,
-        "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-richvariables/v1/CHANGELOG.md",
         "class": "nystudio107\\richvariables\\RichVariables"
     }

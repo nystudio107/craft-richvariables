@@ -51,6 +51,46 @@ class RichVariables extends Plugin
      */
     public static $plugin;
 
+    // Static Methods
+    // =========================================================================
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct($id, $parent = null, array $config = [])
+    {
+        $config['components'] = [
+            // Register the manifest service
+            'manifest' => [
+                'class' => ManifestService::class,
+                'assetClass' => RichVariablesAsset::class,
+                'devServerManifestPath' => 'http://craft-richvariables-buildchain:8080/',
+                'devServerPublicPath' => 'http://craft-richvariables-buildchain:8080/',
+            ],
+        ];
+
+        parent::__construct($id, $parent, $config);
+    }
+
+    // Public Properties
+    // =========================================================================
+
+    /**
+     * @var string
+     */
+    public $schemaVersion = '1.0.0';
+
+    /**
+     * @var bool
+     */
+    public $hasCpSection = false;
+
+    /**
+     * @var bool
+     */
+    public $hasCpSettings = true;
+
+
     // Public Methods
     // =========================================================================
 
@@ -83,14 +123,6 @@ class RichVariables extends Plugin
      */
     protected function installEventListeners()
     {
-        // Register the manifest service
-        $this->set('manifest', [
-            'class' => ManifestService::class,
-            'assetClass' => RichVariablesAsset::class,
-            'devServerManifestPath' => 'http://craft-richvariables-buildchain:8080/',
-            'devServerPublicPath' => 'http://craft-richvariables-buildchain:8080/',
-        ]);
-
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
@@ -173,8 +205,6 @@ class RichVariables extends Plugin
     protected function customFrontendRoutes(): array
     {
         return [
-            // Make webpack async bundle loading work out of published AssetBundles
-            '/cpresources/rich-variables/<resourceType:{handle}>/<fileName>' => 'rich-variables/manifest/resource',
         ];
     }
 
