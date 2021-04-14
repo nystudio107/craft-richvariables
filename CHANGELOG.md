@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.29 - UNRELEASED
+### Changed
+* Try to grab the menu from our local storage cache if possible
+
 ## 1.0.28 - 2021.04.06
 ### Added
 * Added `make update` to update NPM packages
