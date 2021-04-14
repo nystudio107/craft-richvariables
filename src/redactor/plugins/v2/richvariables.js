@@ -26,22 +26,32 @@
             this.toolbar = app.toolbar;
             this.insertion = app.insertion;
 
-            // Grab the globals set Reference Tags from our controller
-            var request = new XMLHttpRequest();
-            request.open('GET', Craft.getActionUrl('rich-variables'), false);
-            request.onload = function() {
-                if (request.status >= 200 && request.status < 400) {
-                } else {
-                }
-            };
-            request.send();
-            this.request = request;
+            // Try to grab the menu from our local storage cache if possible
+            var controllerUrl =  Craft.getActionUrl('rich-variables');
+            var cachedResponseVars = JSON.parse(localStorage.getItem(controllerUrl)) || null;
+            if (cachedResponseVars === null) {
+                // Grab the globals set Reference Tags from our controller
+                var request = new XMLHttpRequest();
+                request.open('GET', controllerUrl, false);
+                request.onload = function() {
+                    if (request.status >= 200 && request.status < 400) {
+                    } else {
+                    }
+                };
+                request.send();
+                this.request = request;
+            }
         },
         start: function()
         {
             var dropdown = {};
-            var responseVars = JSON.parse(this.request.responseText);
-
+            // Try to grab the menu from our local storage cache if possible
+            var controllerUrl =  Craft.getActionUrl('rich-variables');
+            var responseVars = JSON.parse(localStorage.getItem(controllerUrl)) || null;
+            if (responseVars === null && this.request) {
+                responseVars = JSON.parse(this.request.responseText);
+                localStorage.setItem(controllerUrl, JSON.stringify(responseVars))
+            }
             // Iterate through each menu item, adding them to our dropdown
             responseVars.variablesList.forEach(function(menuItem, index) {
                 var key = 'point' + (index + 1);
