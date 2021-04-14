@@ -2,7 +2,7 @@
 
 ## 1.0.29 - UNRELEASED
 ### Changed
-* Try to grab the menu from our local storage cache if possible
+* Cache the Rich Variables menu in local storage, to increase performance for multiple rich text fields per page (https://github.com/nystudio107/craft-richvariables/issues/29)
 
 ## 1.0.28 - 2021.04.06
 ### Added
