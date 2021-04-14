@@ -12,6 +12,35 @@
 
 (function($R)
 {
+    function setWithExpiry(key, value, ttl) {
+        const now = new Date()
+        // `item` is an object which contains the original value
+        // as well as the time when it's supposed to expire
+        const item = {
+            value: value,
+            expiry: now.getTime() + ttl,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+    }
+
+    function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+        // if the item doesn't exist, return null
+        if (!itemStr) {
+            return null
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+        // compare the expiry time of the item with the current time
+        if (now.getTime() > item.expiry) {
+            // If the item is expired, delete the item from storage
+            // and return null
+            localStorage.removeItem(key)
+            return null
+        }
+        return item.value
+    }
+
     $R.add('plugin', 'richvariables', {
         translations: {
             en: {
@@ -27,12 +56,11 @@
             this.insertion = app.insertion;
 
             // Try to grab the menu from our local storage cache if possible
-            var controllerUrl =  Craft.getActionUrl('rich-variables');
-            var cachedResponseVars = JSON.parse(localStorage.getItem(controllerUrl)) || null;
+            var cachedResponseVars = getWithExpiry('rich-variables-menu-cache');
             if (cachedResponseVars === null) {
                 // Grab the globals set Reference Tags from our controller
                 var request = new XMLHttpRequest();
-                request.open('GET', controllerUrl, false);
+                request.open('GET', Craft.getActionUrl('rich-variables'), false);
                 request.onload = function() {
                     if (request.status >= 200 && request.status < 400) {
                     } else {
@@ -46,11 +74,10 @@
         {
             var dropdown = {};
             // Try to grab the menu from our local storage cache if possible
-            var controllerUrl =  Craft.getActionUrl('rich-variables');
-            var responseVars = JSON.parse(localStorage.getItem(controllerUrl)) || null;
+            var responseVars = getWithExpiry('rich-variables-menu-cache');
             if (responseVars === null && this.request) {
                 responseVars = JSON.parse(this.request.responseText);
-                localStorage.setItem(controllerUrl, JSON.stringify(responseVars))
+                setWithExpiry('rich-variables-menu-cache', responseVars, 60 * 1000)
             }
             // Iterate through each menu item, adding them to our dropdown
             responseVars.variablesList.forEach(function(menuItem, index) {
