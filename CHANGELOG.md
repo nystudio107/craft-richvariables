@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 1.0.29 - 2021.04.15
+### Changed
+* Cache the Rich Variables menu in local storage, to increase performance for multiple rich text fields per page (https://github.com/nystudio107/craft-richvariables/issues/29)
+
 ## 1.0.28 - 2021.04.06
 ### Added
 * Added `make update` to update NPM packages
