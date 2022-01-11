@@ -2,18 +2,10 @@
 
 {% block head %}
     {{ parent() }}
-    {{ craft.richVariables.registerCssModules([
-        'vendors.css',
-        'styles.css',
-    ]) }}
-{% endblock %}
-
-{% block foot %}
-    {{ parent() }}
-    {{ craft.richVariables.registerJsModules([
-        'runtime.js',
-        'vendors.js',
-        'commons.js',
-        'richvariables.js',
-    ]) }}
+    {% set tagOptions = {
+        'depends': [
+            'nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesAsset'
+        ],
+    } %}
+    {{ craft.richVariables.register('src/js/app.ts', false, tagOptions, tagOptions) }}
 {% endblock %}

@@ -10,25 +10,19 @@
 
 namespace nystudio107\richvariables\controllers;
 
-use nystudio107\richvariables\RichVariables;
-use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
-
+use aelvan\preparsefield\fields\PreparseFieldType as PreparseField;
 use Craft;
 use craft\base\Field;
-use craft\helpers\Json;
-use craft\fields\PlainText as PlainTextField;
-use craft\fields\Number as NumberField;
+use craft\ckeditor\Field as CKEditorField;
 use craft\fields\Date as DateField;
 use craft\fields\Dropdown as DropdownField;
+use craft\fields\Number as NumberField;
+use craft\fields\PlainText as PlainTextField;
+use craft\helpers\Json;
+use craft\redactor\Field as RedactorField;
 use craft\web\Controller;
-
-use /** @noinspection PhpUndefinedNamespaceInspection */
-    craft\redactor\Field as RedactorField;
-use /** @noinspection PhpUndefinedNamespaceInspection */
-    craft\ckeditor\Field as CKEditorField;
-use /** @noinspection PhpUndefinedNamespaceInspection */
-    aelvan\preparsefield\fields\PreparseFieldType as PreparseField;
-
+use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
+use nystudio107\richvariables\RichVariables;
 use yii\base\InvalidConfigException;
 
 /**
@@ -84,7 +78,7 @@ class DefaultController extends Controller
                             // Add the field title and Reference Tag as per https://craftcms.com/docs/reference-tags
                             $thisVar = [
                                 'title' => $field->name,
-                                'text' => '{globalset:'.$globalsSet->attributes['id'].':'.$field->handle.'}',
+                                'text' => '{globalset:' . $globalsSet->attributes['id'] . ':' . $field->handle . '}',
                             ];
                             $variablesList[] = $thisVar;
                         }
@@ -100,9 +94,9 @@ class DefaultController extends Controller
             Craft::error($e->getMessage(), __METHOD__);
         }
         $menuIconUrl = Craft::$app->assetManager->getPublishedUrl(
-            '@nystudio107/richvariables/assetbundles/richvariables/dist',
-            true
-        ).'/img/RichVariables-menu-icon.svg';
+                '@nystudio107/richvariables/web/assets/dist',
+                true
+            ) . '/img/RichVariables-menu-icon.svg';
 
         // Return everything to our JavaScript encoded as JSON
         $result['variablesList'] = $variablesList;
