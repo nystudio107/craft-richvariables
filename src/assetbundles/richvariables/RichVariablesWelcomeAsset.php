@@ -29,7 +29,7 @@ class RichVariablesWelcomeAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = '@nystudio107/richvariables/assetbundles/richvariables/dist';
+        $this->sourcePath = '@nystudio107/richvariables/web/assets/dist';
 
         $this->depends = [
             CpAsset::class,

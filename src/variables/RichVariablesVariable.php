@@ -10,15 +10,18 @@
 
 namespace nystudio107\richvariables\variables;
 
-use nystudio107\pluginmanifest\variables\ManifestVariable;
+use nystudio107\pluginvite\variables\ViteVariableInterface;
+use nystudio107\pluginvite\variables\ViteVariableTrait;
 
 /**
  * @author    nystudio107
  * @package   RichVariables
  * @since     1.0.0
  */
-class RichVariablesVariable extends ManifestVariable
+class RichVariablesVariable implements ViteVariableInterface
 {
+    use ViteVariableTrait;
+
     // Public Methods
     // =========================================================================
 }

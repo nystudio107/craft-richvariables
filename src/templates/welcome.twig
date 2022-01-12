@@ -7,27 +7,40 @@
 {% set linkGetStarted = url('settings/plugins/rich-variables') %}
 
 {% do view.registerAssetBundle("nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesWelcomeAsset") %}
-{% set baseAssetsUrl = view.getAssetManager().getPublishedUrl('@nystudio107/richvariables/assetbundles/richvariables/dist', true) %}
+{% set baseAssetsUrl = view.getAssetManager().getPublishedUrl('@nystudio107/richvariables/web/assets/dist', true) %}
 
 {% set crumbs = [
     { label: "Rich Variables", url: url('rich-variables') },
     { label: "Welcome"|t, url: url('rich-variables/welcome') },
 ] %}
 
+{% block head %}
+    {{ parent() }}
+    {% set tagOptions = {
+        'depends': [
+            'nystudio107\\richvariables\\assetbundles\\richvariables\\RichVariablesAsset'
+        ],
+    } %}
+    {{ craft.richVariables.register('src/js/welcome.ts', false, tagOptions, tagOptions) }}
+{% endblock %}
+
 {% block content %}
     <div id="cp-nav-content" class="readable" style="text-align:center; margin:0 auto; padding: 5% 10%;">
-        <confetti>
-        </confetti>
-        <img src="{{ baseAssetsUrl ~ '/img/RichVariables-icon.svg' }}" width="30%" height="auto" />
+        <div id="app-container">
+        </div>
+        <img src="{{ baseAssetsUrl ~ '/img/RichVariables-icon.svg' }}" width="30%" height="auto"/>
         <h2>Thanks for using Rich Variables!</h2>
         <p>Rich Variables allows you to easily use Craft Globals as variables in Rich Text fields.</p>
 
-        <p>For more information, please <a href="{{ docsUrl }}" target="_blank" rel="noopener">see the documentation</a>.</p>
+        <p>For more information, please <a href="{{ docsUrl }}" target="_blank" rel="noopener">see the documentation</a>.
+        </p>
         <p>
             &nbsp;
         </p>
         <p>
-            <a href="{{ linkGetStarted }}"><button class="btn submit">Get Started</button></a>
+            <a href="{{ linkGetStarted }}">
+                <button class="btn submit">Get Started</button>
+            </a>
         </p>
     </div>
     <div style="text-align:center; margin:0 auto; padding: 0;">
@@ -35,7 +48,4 @@
             Brought to you by <a href="http://nystudio107.com" target="_blank" rel="noopener">nystudio107</a>
         </p>
     </div>
-    {# include our JavaScript modules #}
-    {{ parent() }}
-    {{ craft.richVariables.includeJsModule("welcome.js", false) }}
 {% endblock %}

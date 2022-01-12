@@ -10,12 +10,7 @@
 
 namespace nystudio107\richvariables;
 
-use nystudio107\richvariables\models\Settings;
-use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
-use nystudio107\richvariables\variables\RichVariablesVariable;
-
-use nystudio107\pluginmanifest\services\ManifestService;
-
+use Composer\Semver\Comparator;
 use Craft;
 use craft\base\Plugin;
 use craft\events\PluginEvent;
@@ -26,11 +21,14 @@ use craft\redactor\Field as RichText;
 use craft\services\Plugins;
 use craft\web\twig\variables\CraftVariable;
 use craft\web\UrlManager;
-
+use Exception;
+use nystudio107\pluginvite\services\VitePluginService;
+use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
+use nystudio107\richvariables\models\Settings;
+use nystudio107\richvariables\variables\RichVariablesVariable;
+use Twig\Error\LoaderError;
 use yii\base\Event;
 use yii\base\InvalidConfigException;
-
-use Composer\Semver\Comparator;
 
 /**
  * Class RichVariables
@@ -39,7 +37,7 @@ use Composer\Semver\Comparator;
  * @package   RichVariables
  * @since     1.0.0
  *
- * @property ManifestService         $manifest
+ * @property VitePluginService $vite
  */
 class RichVariables extends Plugin
 {
@@ -53,6 +51,21 @@ class RichVariables extends Plugin
 
     // Static Methods
     // =========================================================================
+    /**
+     * @var string
+     */
+    public $schemaVersion = '1.0.0';
+
+    // Public Properties
+    // =========================================================================
+    /**
+     * @var bool
+     */
+    public $hasCpSection = false;
+    /**
+     * @var bool
+     */
+    public $hasCpSettings = true;
 
     /**
      * @inheritdoc
@@ -60,35 +73,21 @@ class RichVariables extends Plugin
     public function __construct($id, $parent = null, array $config = [])
     {
         $config['components'] = [
-            // Register the manifest service
-            'manifest' => [
-                'class' => ManifestService::class,
+            // Register the vite service
+            'vite' => [
+                'class' => VitePluginService::class,
                 'assetClass' => RichVariablesAsset::class,
-                'devServerManifestPath' => 'http://craft-richvariables-buildchain:8080/',
-                'devServerPublicPath' => 'http://craft-richvariables-buildchain:8080/',
+                'useDevServer' => true,
+                'devServerPublic' => 'http://localhost:3001',
+                'serverPublic' => 'http://localhost:8000',
+                'errorEntry' => 'src/js/app.ts',
+                'devServerInternal' => 'http://craft-richvariables-buildchain:3001',
+                'checkDevServer' => true,
             ],
         ];
 
         parent::__construct($id, $parent, $config);
     }
-
-    // Public Properties
-    // =========================================================================
-
-    /**
-     * @var string
-     */
-    public $schemaVersion = '1.0.0';
-
-    /**
-     * @var bool
-     */
-    public $hasCpSection = false;
-
-    /**
-     * @var bool
-     */
-    public $hasCpSettings = true;
 
 
     // Public Methods
@@ -131,7 +130,7 @@ class RichVariables extends Plugin
                 $variable = $event->sender;
                 $variable->set('richVariables', [
                     'class' => RichVariablesVariable::class,
-                    'manifestService' => $this->manifest,
+                    'viteService' => $this->vite,
                 ]);
             }
         );
@@ -183,6 +182,17 @@ class RichVariables extends Plugin
     }
 
     /**
+     * Return the custom frontend routes
+     *
+     * @return array
+     */
+    protected function customFrontendRoutes(): array
+    {
+        return [
+        ];
+    }
+
+    /**
      * Install site event listeners for Control Panel requests only
      */
     protected function installCpEventListeners()
@@ -195,17 +205,6 @@ class RichVariables extends Plugin
                 $this->installRedactorPlugin();
             }
         );
-    }
-
-    /**
-     * Return the custom frontend routes
-     *
-     * @return array
-     */
-    protected function customFrontendRoutes(): array
-    {
-        return [
-        ];
     }
 
     /**
@@ -228,7 +227,7 @@ class RichVariables extends Plugin
                         $versionDir = 'v2/';
                     }
                     // Add the path to our Redactor plugin
-                    $src = Craft::getAlias('@nystudio107/richvariables/redactor/plugins/'.$versionDir);
+                    $src = Craft::getAlias('@nystudio107/richvariables/redactor/plugins/' . $versionDir);
                     $event->paths[] = $src;
                 }
             );
@@ -266,13 +265,13 @@ class RichVariables extends Plugin
             return Craft::$app->view->renderTemplate(
                 'rich-variables/settings',
                 [
-                    'settings'    => $this->getSettings(),
+                    'settings' => $this->getSettings(),
                     'globalsSets' => $globalsHandles,
                 ]
             );
-        } catch (\Twig\Error\LoaderError $e) {
+        } catch (LoaderError $e) {
             Craft::error($e->getMessage(), __METHOD__);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Craft::error($e->getMessage(), __METHOD__);
         }
 
