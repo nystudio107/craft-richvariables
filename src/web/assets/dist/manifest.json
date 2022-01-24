@@ -5,17 +5,20 @@
     "isEntry": true,
     "css": [
       "assets/app.f1fcf373.css"
-    ]
+    ],
+    "integrity": "sha384-UC2hbo5SD2DrtRwnxbMm6gDl1MFh2CEJJCth9+BmEbh5fO3LX98rTHrDzo90kQX9"
   },
   "src/js/welcome.ts": {
-    "file": "assets/welcome.a9170510.js",
+    "file": "assets/welcome.38ed5ff5.js",
     "src": "src/js/welcome.ts",
     "isEntry": true,
     "imports": [
-      "_vendor.e1964482.js"
-    ]
+      "_vendor.a4d540da.js"
+    ],
+    "integrity": "sha384-JAUPXJ/Ax2ejFI8WQ8NluWWLCjP1qVI8flghnklQIXTEno0h70LDeCQLem/vEE1G"
   },
-  "_vendor.e1964482.js": {
-    "file": "assets/vendor.e1964482.js"
+  "_vendor.a4d540da.js": {
+    "file": "assets/vendor.a4d540da.js",
+    "integrity": "sha384-NwtTvc5GR2Yfyjc/Q6u1gcoVG0qdALDhM21Wto7L1ZggZEFRLuqe7vBMPUQp7yIl"
   }
 }

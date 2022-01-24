@@ -1,0 +1,2 @@
+import{d as n,C as c,o as r,a,c as s,b as l,e as p}from"./vendor.a4d540da.js";const i=n({setup(o){const e={defaultType:"rect",defaultSize:15,defaultColors:["DodgerBlue","OliveDrab","Gold","pink","SlateBlue","lightblue","Violet","PaleGreen","SteelBlue","SandyBrown","Chocolate","Crimson"]},t=new c;return r(()=>{t.start(e),setTimeout(()=>{t.stop()},5e3)}),(_,f)=>(a(),s("div"))}}),u=n({setup(o){return(e,t)=>(a(),l(i))}}),d=async()=>p(u).mount("#app-container");d().then(()=>{console.log()});
+//# sourceMappingURL=welcome.38ed5ff5.js.map
