@@ -33,7 +33,7 @@ For instance, you might have loan rates that appear in the body of multiple Rich
 
 ## Configuring Rich Variables
 
-To configure Rich Variables, first you'll need to create a Globals set (if you don't have one already) by clicking on **Settings**→**Globals**:
+To configure Rich Variables, first you’ll need to create a Globals set (if you don’t have one already) by clicking on **Settings**→**Globals**:
 
 ![Screenshot](./resources/screenshots/richvariables01.png)
 
@@ -43,9 +43,9 @@ Next, you need to tell Rich Variables which Globals set (you can have an arbitra
 
 ![Screenshot](./resources/screenshots/richvariables02.png)
 
-Finally, we'll need to let Redactor (the Craft 2.x Rich Text editor) know that we want to use the Rich Variables plugin. You can do this by editing the Redactor settings in `craft/config/redactor/`. Make sure you edit the settings that your Rich Text fields use to add `richvariables` to the `plugins` array.
+Finally, we’ll need to let Redactor (the Craft 2.x Rich Text editor) know that we want to use the Rich Variables plugin. You can do this by editing the Redactor settings in `craft/config/redactor/`. Make sure you edit the settings that your Rich Text fields use to add `richvariables` to the `plugins` array.
 
-For example, here's what my `Standard.json` Redactor settings looks like:
+For example, here’s what my `Standard.json` Redactor settings looks like:
 ```json
     {
         "buttons": ["format","kbd","bold","italic","lists","link","file","horizontalrule"],
@@ -55,7 +55,7 @@ For example, here's what my `Standard.json` Redactor settings looks like:
 
 Note that `richvariables` was added to the `plugins` array above.
 
-If Rich Variables isn't appearing in your Rich Text fields, it's usually because the Rich Text fields aren't using the Redactor settings where you added `richvariables` to the `plugins` array.
+If Rich Variables isn’t appearing in your Rich Text fields, it’s usually because the Rich Text fields aren’t using the Redactor settings where you added `richvariables` to the `plugins` array.
 
 ## Using Rich Variables
 
@@ -63,7 +63,7 @@ The setup was the hard part. Using Rich Variables is easy, just go to your Rich 
 
 ![Screenshot](./resources/screenshots/richvariables03.png)
 
-Choose one to insert it into your Rich Text field. You'll see some code-looking stuff inserted, such as `{globalset:737:loanName}` in the example above.
+Choose one to insert it into your Rich Text field. You’ll see some code-looking stuff inserted, such as `{globalset:737:loanName}` in the example above.
 
 This is actually a [Reference Tag](https://craftcms.com/docs/reference-tags) to the Globals set Element and Field that you chose. 
  
@@ -79,8 +79,8 @@ Nice.
 
 ## Miscellanea
 
-To display itself in a tokenized way, Rich Variables wraps the inserted variables in `<ins></ins>` tags. The default styling for these seldom-used tags is `text-decoration: underline;` in many browsers. So for frontend display, you might need to add some CSS to override this if you don't want them underlined.
+To display itself in a tokenized way, Rich Variables wraps the inserted variables in `<ins></ins>` tags. The default styling for these seldom-used tags is `text-decoration: underline;` in many browsers. So for frontend display, you might need to add some CSS to override this if you don’t want them underlined.
 
-Redactor can be a little weird with inline styles; this isn't anything specific to Rich Variables. What I typically do is when I want to insert an inline style, I type two spaces, then the left-arrow key, and then I insert my inline style in Redactor. This ensures that there is a space on either side of the inline style, and prevents some formatting headaches.
+Redactor can be a little weird with inline styles; this isn’t anything specific to Rich Variables. What I typically do is when I want to insert an inline style, I type two spaces, then the left-arrow key, and then I insert my inline style in Redactor. This ensures that there is a space on either side of the inline style, and prevents some formatting headaches.
 
 Brought to you by [nystudio107](https://nystudio107.com)

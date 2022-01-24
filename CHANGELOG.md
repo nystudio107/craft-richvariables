@@ -1,5 +1,12 @@
 # Rich Variables Changelog
 
+## 1.0.31 - 2022.01.24
+
+### Fixed
+
+* Fixed an issue where `craft-plugin-vite` was not included as
+  required ([#39](https://github.com/nystudio107/craft-richvariables/issues/39))
+
 ## 1.0.30 - 2022.01.12
 
 ### Added
