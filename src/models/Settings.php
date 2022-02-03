@@ -25,12 +25,12 @@ class Settings extends Model
     /**
      * @var string
      */
-    public $globalSetHandle = '';
+    public string $globalSetHandle = '';
 
     /**
      * @var bool
      */
-    public $useIconForMenu = true;
+    public bool $useIconForMenu = true;
 
     // Public Methods
     // =========================================================================

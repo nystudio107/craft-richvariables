@@ -12,6 +12,7 @@ namespace nystudio107\richvariables;
 
 use Composer\Semver\Comparator;
 use Craft;
+use craft\base\Model;
 use craft\base\Plugin;
 use craft\events\PluginEvent;
 use craft\events\RegisterUrlRulesEvent;
@@ -26,7 +27,6 @@ use nystudio107\pluginvite\services\VitePluginService;
 use nystudio107\richvariables\assetbundles\richvariables\RichVariablesAsset;
 use nystudio107\richvariables\models\Settings;
 use nystudio107\richvariables\variables\RichVariablesVariable;
-use Twig\Error\LoaderError;
 use yii\base\Event;
 use yii\base\InvalidConfigException;
 
@@ -47,25 +47,25 @@ class RichVariables extends Plugin
     /**
      * @var RichVariables
      */
-    public static $plugin;
+    public static Plugin $plugin;
 
     // Static Methods
     // =========================================================================
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
 
     // Public Properties
     // =========================================================================
     /**
      * @var bool
      */
-    public $hasCpSection = false;
+    public bool $hasCpSection = false;
     /**
      * @var bool
      */
-    public $hasCpSettings = true;
+    public bool $hasCpSettings = true;
 
     /**
      * @inheritdoc
@@ -96,7 +96,7 @@ class RichVariables extends Plugin
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
@@ -120,7 +120,7 @@ class RichVariables extends Plugin
     /**
      * Install our event listeners
      */
-    protected function installEventListeners()
+    protected function installEventListeners(): void
     {
         Event::on(
             CraftVariable::class,
@@ -161,7 +161,7 @@ class RichVariables extends Plugin
     /**
      * Install site event listeners for site requests only
      */
-    protected function installSiteEventListeners()
+    protected function installSiteEventListeners(): void
     {
         // Handler: UrlManager::EVENT_REGISTER_SITE_URL_RULES
         Event::on(
@@ -195,7 +195,7 @@ class RichVariables extends Plugin
     /**
      * Install site event listeners for Control Panel requests only
      */
-    protected function installCpEventListeners()
+    protected function installCpEventListeners(): void
     {
         // Handler: Plugins::EVENT_AFTER_LOAD_PLUGINS
         Event::on(
@@ -210,7 +210,7 @@ class RichVariables extends Plugin
     /**
      * Install our Redactor plugin
      */
-    protected function installRedactorPlugin()
+    protected function installRedactorPlugin(): void
     {
         // Make sure the Redactor plugin is installed
         $redactor = Craft::$app->getPlugins()->getPlugin('redactor');
@@ -219,7 +219,7 @@ class RichVariables extends Plugin
             Event::on(
                 RichText::class,
                 RichText::EVENT_REGISTER_PLUGIN_PATHS,
-                function (RegisterPluginPathsEvent $event) {
+                static function (RegisterPluginPathsEvent $event) {
                     /** @var Plugin $redactor */
                     $redactor = Craft::$app->getPlugins()->getPlugin('redactor');
                     $versionDir = 'v1/';
@@ -243,7 +243,7 @@ class RichVariables extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
@@ -269,8 +269,6 @@ class RichVariables extends Plugin
                     'globalsSets' => $globalsHandles,
                 ]
             );
-        } catch (LoaderError $e) {
-            Craft::error($e->getMessage(), __METHOD__);
         } catch (Exception $e) {
             Craft::error($e->getMessage(), __METHOD__);
         }

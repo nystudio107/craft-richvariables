@@ -35,7 +35,7 @@ class DefaultController extends Controller
     // Constants
     // =========================================================================
 
-    const VALID_FIELD_CLASSES = [
+    protected const VALID_FIELD_CLASSES = [
         PlainTextField::class,
         NumberField::class,
         DateField::class,
@@ -51,13 +51,16 @@ class DefaultController extends Controller
     /**
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
         $result = [];
         $variablesList = [];
 
         // Get the global set to use
         $settings = RichVariables::$plugin->getSettings();
+        if (!$settings) {
+            return '';
+        }
         $globalsSet = Craft::$app->getGlobals()->getSetByHandle($settings['globalSetHandle']);
         // Grab the first global set if they haven't specified one yet
         if (!$globalsSet) {
