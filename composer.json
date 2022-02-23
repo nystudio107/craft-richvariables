@@ -34,9 +34,12 @@
     }
   },
   "extra": {
-    "name": "Rich Variables",
+    "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-richvariables/v4/CHANGELOG.md",
+    "class": "nystudio107\\richvariables\\RichVariables",
+    "developer": "nystudio107",
+    "developerUrl": "https://nystudio107.com",
+    "documentationUrl": "https://nystudio107.com/docs/rich-variables/",
     "handle": "rich-variables",
-    "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-richvariables/v1/CHANGELOG.md",
-    "class": "nystudio107\\richvariables\\RichVariables"
+    "name": "Rich Variables"
   }
 }
