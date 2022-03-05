@@ -249,7 +249,7 @@ class RichVariables extends Plugin
     /**
      * @inheritdoc
      */
-    protected function settingsHtml(): string
+    protected function settingsHtml(): ?string
     {
         // Get all of the globals sets
         $globalsHandles = [];
