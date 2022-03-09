@@ -2,7 +2,7 @@
   "name": "nystudio107/craft-richvariables",
   "description": "Allows you to easily use Craft Globals as variables in Rich Text fields",
   "type": "craft-plugin",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0-beta.2",
   "keywords": [
     "craft",
     "cms",
@@ -13,8 +13,9 @@
     "variables"
   ],
   "support": {
-    "docs": "https://nystudio107.com/plugins/rich-variables/documentation",
-    "issues": "https://nystudio107.com/plugins/rich-variables/support"
+    "docs": "https://nystudio107.com/docs/rich-variables/",
+    "issues": "https://nystudio107.com/plugins/rich-variables/support",
+    "source": "https://github.com/nystudio107/craft-richvariables"
   },
   "license": "proprietary",
   "authors": [
@@ -34,9 +35,8 @@
     }
   },
   "extra": {
-    "name": "Rich Variables",
+    "class": "nystudio107\\richvariables\\RichVariables",
     "handle": "rich-variables",
-    "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft-richvariables/v1/CHANGELOG.md",
-    "class": "nystudio107\\richvariables\\RichVariables"
+    "name": "Rich Variables"
   }
 }

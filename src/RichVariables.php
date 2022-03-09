@@ -49,15 +49,14 @@ class RichVariables extends Plugin
      */
     public static Plugin $plugin;
 
-    // Static Methods
+    // Public Properties
     // =========================================================================
+
     /**
      * @var string
      */
     public string $schemaVersion = '1.0.0';
 
-    // Public Properties
-    // =========================================================================
     /**
      * @var bool
      */
@@ -88,7 +87,6 @@ class RichVariables extends Plugin
 
         parent::__construct($id, $parent, $config);
     }
-
 
     // Public Methods
     // =========================================================================
@@ -251,7 +249,7 @@ class RichVariables extends Plugin
     /**
      * @inheritdoc
      */
-    protected function settingsHtml(): string
+    protected function settingsHtml(): ?string
     {
         // Get all of the globals sets
         $globalsHandles = [];

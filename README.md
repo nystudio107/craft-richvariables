@@ -1,6 +1,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/quality-score.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1) [![Code Coverage](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/coverage.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/?branch=v1) [![Build Status](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/build.png?b=v1)](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/build-status/v1) [![Code Intelligence Status](https://scrutinizer-ci.com/g/nystudio107/craft-richvariables/badges/code-intelligence.svg?b=v1)](https://scrutinizer-ci.com/code-intelligence)
 
-# Rich Variables plugin for Craft CMS 3.x
+# Rich Variables plugin for Craft CMS 4.x
 
 Allows you to easily use Craft Globals as variables in Rich Text fields
 
@@ -12,7 +12,7 @@ Related: [Rich Variables for Craft 2.x](https://github.com/nystudio107/richvaria
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 4.0.0 or later.
 
 ## Installation
 
@@ -23,7 +23,7 @@ To install Rich Variables, follow these steps:
 
 You can also install Rich Variables via the **Plugin Store** in the Craft Control Panel.
 
-Rich Variables works on Craft 3.x
+Rich Variables works on Craft 4.x
 
 ## Documentation
 
