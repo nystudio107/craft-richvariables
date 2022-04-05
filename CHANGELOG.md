@@ -1,5 +1,11 @@
 # Rich Variables Changelog
 
+## 4.0.0-beta.3 - 2022.04.05
+
+### Changed
+
+* Changed the `composer.json` to require `"craftcms/redactor": "^3.0.0-beta.1"` now that the beta is available ([#43](https://github.com/nystudio107/craft-richvariables/issues/43))
+
 ## 4.0.0-beta.2 - 2022.03.04
 
 ### Fixed
