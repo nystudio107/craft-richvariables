@@ -1,5 +1,9 @@
 # Rich Variables Changelog
 
+## 4.0.0 - UNRELEASED
+### Added
+* Initial Craft CMS 4 release
+
 ## 4.0.0-beta.3 - 2022.04.05
 
 ### Changed
