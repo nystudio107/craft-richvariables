@@ -73,7 +73,7 @@ class DefaultController extends Controller
             // Get the field layout fields used for this global set
             $layout = $globalsSet->getFieldLayout();
             if ($layout) {
-                $fieldLayoutFields = $layout->getFields();
+                $fieldLayoutFields = $layout->getCustomFields();
                 /** @var Field $field */
                 foreach ($fieldLayoutFields as $field) {
                     foreach (self::VALID_FIELD_CLASSES as $fieldClass) {
