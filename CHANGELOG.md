@@ -1,5 +1,12 @@
 # Rich Variables Changelog
 
+## 4.0.0 - 2022.08.04
+### Added
+* Initial Craft CMS 4 release
+
+### Fixed
+* Fixed an issue which caused an exception to be thrown by changing `->getFields()` to `->getCustomFields()` ([#45](https://github.com/nystudio107/craft-richvariables/issues/45))
+
 ## 4.0.0-beta.3 - 2022.04.05
 
 ### Changed
